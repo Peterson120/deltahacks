@@ -1,0 +1,17 @@
+.box {
+    background-color: white;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    height: 15vh;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
+.container {
+    max-width: 80vw;
+    margin: 3% auto;
+}

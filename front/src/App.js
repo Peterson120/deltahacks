@@ -1,10 +1,15 @@
 import './styles.css';
+import Container from 'react-bootstrap/Container';
+import Box from './components/Box/Box';
 
 function App() {
   return (
-    <div>
-
-    </div>
+    <Container>
+      
+      <Box></Box>
+      <Box></Box>
+      <Box></Box>
+    </Container>
 );
 }
 
