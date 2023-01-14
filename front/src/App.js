@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./styles.css";
+import ChatView from "./components/chatView/ChatView";
 
-function App() {
+export default function App() {
+  const [loginUser, setLoginUser] = useState(null);
+  const [showDialog, setShowDialog] = useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>This is the Simplest React Chat App</h1>
+      <ChatView loginUser={loginUser} />
     </div>
   );
 }
-
-export default App;
