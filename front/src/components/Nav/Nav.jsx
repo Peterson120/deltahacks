@@ -5,12 +5,11 @@ import { Consts } from "../../consts";
 
 export default function Nav() {
   const reset = () => {
-    const infoContainer = document.getElementById("info-page");
     const homeContainer = document.getElementById("home-container");
     const fadeDown = document.querySelectorAll(".fade-down");
     const fadeUp = document.querySelector(".fade-up");
 
-    infoContainer.classList.add("hidden");
+    document.getElementById("info-page").classList.add("hidden");
     homeContainer.classList.remove("absolute");
     homeContainer.classList.remove("animate__backOutUp");
     homeContainer.classList.remove("hide");

@@ -10,6 +10,7 @@ export function Homepage(prop) {
       element.classList.add("animate__fadeOutDown");
     });
     fadeUp.classList.add("animate__backOutUp");
+    document.getElementById("info-page").classList.add("fadeIn");
   };
 
   const hide = () => {
@@ -17,7 +18,6 @@ export function Homepage(prop) {
     document.getElementById("home-container").classList.add("hide");
     infoPage.classList.remove("hidden");
     infoPage.classList.add("block");
-    infoPage.classList.toggle('fade');
   };
 
   return (
