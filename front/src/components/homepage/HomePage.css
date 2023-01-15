@@ -1,16 +1,16 @@
 .button {
-    bottom: 25%;
+    top: 70vh;
     text-align: center;
     position: absolute;
 }
 
 .rocket-1 {
-    top: 15%;
+    top: 12vh;
     position: absolute;
 }
 
 .launch {
-    bottom: 15%;
+    top: 75vh;
     position: absolute;
 }
 
