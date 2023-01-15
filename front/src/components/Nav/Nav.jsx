@@ -27,7 +27,7 @@ export default function Nav() {
   };
 
   return (
-    <Navbar className="self-start border-0">
+    <Navbar className="self-start border-0 bg-darkBg">
       <a className="flex flex-row my-1 lg:my-2 mt-5">
         <Rocket
           id="rocket"
