@@ -11,13 +11,12 @@ export function Homepage() {
     });
     fadeUp.classList.add("animate__backOutUp");
 
-    const homePage = document.getElementById("home-container");
     const infoPage = document.getElementById("info-page");
     infoPage.classList.remove("hidden");
     infoPage.classList.add("block");
-
-    homePage.classList.add("absolute");
   };
+
+  const hide = () => {document.getElementById("home-container").classList.add("hide")};
 
   return (
     <div className="relative flex flex-col items-center">
@@ -55,6 +54,7 @@ export function Homepage() {
       <div>
         <button
           onMouseDown={goAnimate}
+          onAnimationEnd={hide}
           className="animate__animated fade-down text-white border-3 p-5 mt-5 font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
         >
           Launch!
