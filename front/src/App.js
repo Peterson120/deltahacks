@@ -5,20 +5,18 @@ import { Homepage } from "./components/homepage/Homepage";
 
 function App() {
   return (
-    <div className="h-screen bg-darkBg">
-      <Homepage />
+    <div>
+      <div id="home-container" className="h-screen bg-darkBg">
+        <Homepage />
+      </div>
+      <div id="info-page" className="hidden h-screen">
+        <Nav />
+        <div>
+          <Box />
+          <Box />
+        </div>
+      </div>
     </div>
-    // <div className="h-screen w-screen flex items-center">
-    //     <Nav/>
-    //     <div className="main flex flex-row">
-    //         <Box>
-
-    //         </Box>
-    //         <Box>
-
-    //         </Box>
-    //     </div>
-    // </div>
   );
 }
 
