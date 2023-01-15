@@ -1,6 +1,6 @@
 import cohere
 from cohere.classify import Example
-from flask import Flask, request
+from flask import Flask
 
 co = cohere.Client('HRS65KTVg361twQCYspM1P2ppBmT8fQxN8DqWQ8k')
 
@@ -9,65 +9,63 @@ stopwords = ["0o", "0s", "3a", "3b", "3d", "6b", "6o", "a", "a1", "a2", "a3", "a
 pos_reviews = []
 neg_reviews = []
 
-response = cohere.client.Classifications([])
+inputs=["The waiter got my order wrong",
+"I had to wait for over and hour for my food"
+"Patricia is the rudest waitress I've ever met",
+"The restaurant was unclean",
+"I had an excellent dinner at McDonald's",
+"I enjoyed Bob's entree recommendations",
+"The restaurant was beautiful inside",
+"The food was served in a good portion",
+"I ordered a pizza",
+"The food was mediocre"]
 
-app = Flask(__name__)
+examples=[
+## delivery service
+  Example("The order came 5 days early", "positive"), 
+  Example("The item exceeded my expectations", "positive"), 
+  Example("I ordered more for my friends", "positive"), 
+  Example("I would buy this again", "positive"), 
+  Example("I would recommend this to others", "positive"), 
+  Example("The package was damaged", "negative"), 
+  Example("The order is 5 days late", "negative"), 
+  Example("The order was incorrect", "negative"), 
+  Example("I want to return my item", "negative"), 
+  Example("The item's material feels low quality", "negative"), 
+  Example("The product was okay", "neutral"), 
+  Example("I received five items in total", "neutral"), 
+  Example("I bought it from the website", "neutral"), 
+  Example("I used the product this morning", "neutral"), 
+  Example("The product arrived yesterday", "neutral"), 
+## restaurant
+  Example("The food was excellently cooked", "positive"), 
+  Example("The food was well cooked", "positive"), 
+  Example("The food was decently cooked", "neutral"), 
+  Example("The food was badly cooked", "negative"),
+  Example("I could barely contain myself from eating another plate", "positive"), 
+  Example("The food was barely edible", "negative"),
+  Example("I had a wonderful time being served by Tracy", "positive"), 
+  Example("The environment was very welcoming and staff were friendly", "positive"),
+  Example("Overall, the food was alright", "neutral"), 
+  Example("The environment was dirty and staff were unfriendly", "negative"), 
+  Example("The restaurant was well decorated", "positive"),
+  Example("The restaurant was ugly", "negative"),
+  Example("The waittress named May was terribly ill-mannered", "negative"), 
+  Example("My family is definitely coming back for more", "positive"), 
+  Example("My family will never be coming back", "negative"), 
+  Example("I ate the chicken sandwich", "neutral"), 
+  Example("The owner of this restaurant is careless", "negative"),
+  # waiter slander
+  Example("Patricia dropped 3 dishes on the floor", "negative"),
+  Example("Bob picked his nose in front of my family", "negative"),
+  Example("Bob had a wonderful attitude", "positive"),
+]
 
-
-#TODO Pull from front-end
-inputs = []
-
-@app.route("/acceptData", methods=["POST"])
-def get_data():
-  global response
-  inputs.append(request.form.get("launch"))
-
-  examples=[
-  ## delivery service
-    Example("The order came 5 days early", "positive"), 
-    Example("The item exceeded my expectations", "positive"), 
-    Example("I ordered more for my friends", "positive"), 
-    Example("I would buy this again", "positive"), 
-    Example("I would recommend this to others", "positive"), 
-    Example("The package was damaged", "negative"), 
-    Example("The order is 5 days late", "negative"), 
-    Example("The order was incorrect", "negative"), 
-    Example("I want to return my item", "negative"), 
-    Example("The item's material feels low quality", "negative"), 
-    Example("The product was okay", "neutral"), 
-    Example("I received five items in total", "neutral"), 
-    Example("I bought it from the website", "neutral"), 
-    Example("I used the product this morning", "neutral"), 
-    Example("The product arrived yesterday", "neutral"), 
-  ## restaurant
-    Example("The food was excellently cooked", "positive"), 
-    Example("The food was well cooked", "positive"), 
-    Example("The food was decently cooked", "neutral"), 
-    Example("The food was badly cooked", "negative"),
-    Example("I could barely contain myself from eating another plate", "positive"), 
-    Example("The food was barely edible", "negative"),
-    Example("I had a wonderful time being served by Tracy", "positive"), 
-    Example("The environment was very welcoming and staff were friendly", "positive"),
-    Example("Overall, the food was alright", "neutral"), 
-    Example("The environment was dirty and staff were unfriendly", "negative"), 
-    Example("The restaurant was well decorated", "positive"),
-    Example("The restaurant was ugly", "negative"),
-    Example("The waittress named May was terribly ill-mannered", "negative"), 
-    Example("My family is definitely coming back for more", "positive"), 
-    Example("My family will never be coming back", "negative"), 
-    Example("I ate the chicken sandwich", "neutral"), 
-    Example("The owner of this restaurant is careless", "negative"),
-    # waiter slander
-    Example("Patricia dropped 3 dishes on the floor", "negative"),
-    Example("Bob picked his nose in front of my family", "negative"),
-    Example("Bob had a wonderful attitude", "positive"),
-  ]
-
-  response = co.classify(
-    model='large',
-    inputs=inputs,
-    examples=examples,
-  )
+response = co.classify(
+  model='large',
+  inputs=inputs,
+  examples=examples,
+)
 
 
 def class_reviews():
@@ -103,18 +101,19 @@ def tokenize(pos_reviews, neg_reviews):
   
   return pos_words, neg_words
 
+app = Flask(__name__)
+
 def main():
   pos, neg = class_reviews()
   pos_dict, neg_dict = tokenize(pos, neg)
   cleaned_pos_dict = {k.strip():v for (k, v) in pos_dict.items() if not k.strip().lower() in stopwords}
   cleaned_neg_dict = {k.strip():v for (k, v) in neg_dict.items() if not k.strip().lower() in stopwords}
-  
   @app.route('/data')
   def return_token_dicts():
       
       return {
-          'PositiveList' : list(cleaned_pos_dict.items())[:5],
-          'NegativeList' : list(cleaned_neg_dict.items())[:5]
+          'PositiveDict' : list(cleaned_pos_dict.items())[:5],
+          'NegativeDict' : list(cleaned_neg_dict.items())[:5]
       } 
       
   app.run(debug=True)

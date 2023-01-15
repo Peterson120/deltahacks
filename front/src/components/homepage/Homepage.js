@@ -49,8 +49,8 @@ export function Homepage(prop) {
       </div>
       <div>
         <input
-          type="file"
-          className="animate__animated fade-down text-white mt-[35px]"
+          type="text"
+          className="animate__animated fade-down mt-[35px]"
         ></input>
       </div>
       <div>
