@@ -112,8 +112,8 @@ def main():
   def return_token_dicts():
       
       return {
-          'PositiveDict' : list(cleaned_pos_dict.items())[:5],
-          'NegativeDict' : list(cleaned_neg_dict.items())[:5]
+          'PositiveList' : list(cleaned_pos_dict.items())[:5],
+          'NegativeList' : list(cleaned_neg_dict.items())[:5]
       } 
       
   app.run(debug=True)

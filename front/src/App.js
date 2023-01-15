@@ -53,10 +53,10 @@ function App() {
         <Nav />
         <div className="flex justify-center items-center">
           <div className="main flex flex-row items-center">
-            <Box title="Positive">
+            <Box title="Positive" datas={posData}>
               <p>Hi</p>
             </Box>
-            <Box id="b2" title="Negative">
+            <Box title="Negative" datas={negData}>
               <p>Bye</p>
             </Box>
           </div>
