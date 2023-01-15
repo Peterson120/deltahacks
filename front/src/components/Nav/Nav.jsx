@@ -30,7 +30,7 @@ export default function Nav() {
 			<Navbar className="self-start border-0">
 				<a className="flex flex-row my-1 lg:my-2 mt-5">
 					<Rocket id="rocket" className="rocket float cursor-pointer" onMouseDown={animate} onAnimationEnd={reset} />
-					<span onMouseDown={animate} onAnimationEnd={reset} className="title tracking-wide drop-shadow-2xl pt-8 cursor-pointer font-extrabold">{Consts.name}</span>
+					<span onMouseDown={animate} onAnimationEnd={reset} className="title tracking-wide drop-shadow-2xl cursor-pointer font-extrabold">{Consts.name}</span>
 				</a>
 			</Navbar>
 	);
