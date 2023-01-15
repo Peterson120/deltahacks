@@ -7,7 +7,7 @@
     -o-border-radius: 15px;
     height: 35vw;
     width: 35vw;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .gradient {
@@ -43,4 +43,20 @@
     margin-top: auto;
     margin-bottom: auto;
     font-weight: 600;
+}
+
+ol {
+    margin: 2% auto;
+    text-align: center;
+}
+
+li {
+    font-size: 200%;
+}
+
+#press, #info {
+    font-size: 300%;
+    margin: auto 0;
+    justify-content: center;
+    align-items: center;
 }

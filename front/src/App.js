@@ -44,25 +44,24 @@ function App() {
   });
 
   return (
-    <div>
-      <div id="home-container" className="h-screen fadeIn bg-darkBg">
-        <Homepage />
-      </div>
-      <div ref={infoRef} id="info-page" className="hidden fadeIn">
-        <Nav />
-        <div className="flex justify-center items-center">
-          <div className="main flex flex-row items-center">
-            <Box title="Positive" datas={posData}>
-              <p>Hi</p>
-            </Box>
-            <Box title="Negative" datas={negData}>
-              <p>Bye</p>
-            </Box>
+          <div>
+            <div id="home-container" className="h-screen fadeIn bg-darkBg">
+              <Homepage/>
+            </div>
+            <div ref={infoRef} id="info-page" className="hidden fadeIn">
+              <Nav/>
+              <div className="flex justify-center items-center">
+                <div className="main flex flex-row items-center">
+                  <Box title="Positive" className="box" datas={posData}>
+                    <p>Hi</p>
+                  </Box>
+                  <Box id="b2" title="Negative" datas={negData}>
+                    <p>Bye</p>
+                  </Box>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
   );
 }
-
 export default App;
