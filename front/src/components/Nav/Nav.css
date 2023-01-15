@@ -1,5 +1,5 @@
 .title {
-    font-size: xxx-large;
+    font-size: 2.5vw;
     color: white;
     text-shadow:
    -1px -1px 0 #000,  
@@ -9,10 +9,22 @@
 }
 
 .rocket {
+    width: 5vw;
     margin-left: 10%;
     transform: rotate(30deg);
     -webkit-transform: rotate(30deg);
     -moz-transform: rotate(30deg);
     -ms-transform: rotate(30deg);
     -o-transform: rotate(30deg);
+    animation-name : move;
+    animation-iteration-count : infinite;
+    animation-direction : alternate;
+    animation-duration : 2s;
+}
+
+@keyframes move {
+    from {
+        transform: translateY(0px) translateX(15px)rotate(30deg);
+    }
+    to {transform: translateY(30px) translateX(0px) rotate(30deg);}
 }
