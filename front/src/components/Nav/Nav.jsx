@@ -17,6 +17,7 @@ export default function Nav() {
       element.classList.remove("animate__fadeOutDown");
     });
     fadeUp.classList.remove("animate__backOutUp");
+    homeContainer.classList.remove("hide");
   };
 
   return (
