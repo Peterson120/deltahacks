@@ -5,10 +5,14 @@ import Nav from "./components/Nav/Nav";
 function App() {
     return (
         <div>
-            <Nav></Nav>
+            <Nav/>
             <div className="flex flex-row">
-                <Box></Box>
-                <Box></Box>
+                <Box>
+
+                </Box>
+                <Box>
+
+                </Box>
             </div>
         </div>
     );
