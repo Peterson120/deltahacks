@@ -1,6 +1,9 @@
 import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
+import React from "react";
+import "./HomePage.css";
+import { Consts } from "../../consts";
 
 export function Homepage(prop) {
   const goAnimate = () => {
@@ -20,18 +23,25 @@ export function Homepage(prop) {
     infoPage.classList.add("block");
   };
 
+  const hiddenFileInput = React.useRef(null);
+
+  const handleChange = (event) => {
+    const fileUploaded = event.target.files[0];
+    prop.handleFile(fileUploaded);
+  };
+
   return (
-    <div className="relative flex flex-col items-center">
-      <div className="text-center flex flex-col items-center relative pt-8">
-        <div className="flex flex-col items-center">
+    <div className="relative flex flex-col items-center h-full">
+      <div className="text-center flex flex-col items-center relative h-full">
+        <div className="flex flex-col items-center h-full">
           <img
-            className="animate__animated fade-up object-contain"
+            className="animate__animated fade-up object-contain rocket-1"
             src={rocket}
             alt="rocket ship"
             draggable="false"
           ></img>
           <img
-            className="animate__animated fade-down object-contain"
+            className="animate__animated fade-down object-contain smoke"
             src={smoke}
             alt="smoke"
             draggable="false"
@@ -43,22 +53,25 @@ export function Homepage(prop) {
             draggable="false"
           ></img>
         </div>
-        <div className="animate__animated fade-down text-white text-4xl font-bold absolute top-1/2">
-          SentiMate
+        <div className="animate__animated fade-down head-text">
+          {Consts.name}
         </div>
       </div>
-      <div>
+      <div className="button animate__animated fade-down text-white text-2xl">
         <input
           type="file"
-          className="animate__animated fade-down text-white mt-[35px]"
-        ></input>
+          ref={hiddenFileInput}
+          onChange={handleChange}
+          style={{ display: "none" }}
+        />
+        <input className="text-[black]" type="text"></input>
       </div>
-      <div>
+      <div className="launch">
         <button
           id="launch"
           onMouseDown={goAnimate}
           onAnimationEnd={hide}
-          className="animate__animated fade-down text-white border-3 px-5 py-3 mt-5 font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
+          className="animate__animated fade-down text-white border-3 px-9 py-4 mt-5 text-xl font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
         >
           Launch!
         </button>
