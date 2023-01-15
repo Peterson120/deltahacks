@@ -1,1 +1,3 @@
-export const name = "SentiView";
+export const Consts = {
+    "name": "SentiView",
+};
