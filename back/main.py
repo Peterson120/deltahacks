@@ -9,13 +9,16 @@ stopwords = ["0o", "0s", "3a", "3b", "3d", "6b", "6o", "a", "a1", "a2", "a3", "a
 pos_reviews = []
 neg_reviews = []
 
-
-#TODO Pull from front-end
-inputs=[
-  "This item was broken when it arrived",
-  "The product is very amazing",
-  "The product was not too bad",
-]
+inputs=["The waiter got my order wrong",
+"I had to wait for over and hour for my food"
+"Patricia is the rudest waitress I've ever met",
+"The restaurant was unclean",
+"I had an excellent dinner at McDonald's",
+"I enjoyed Bob's entree recommendations",
+"The restaurant was beautiful inside",
+"The food was served in a good portion",
+"I ordered a pizza",
+"The food was mediocre"]
 
 examples=[
 ## delivery service
@@ -105,13 +108,12 @@ def main():
   pos_dict, neg_dict = tokenize(pos, neg)
   cleaned_pos_dict = {k.strip():v for (k, v) in pos_dict.items() if not k.strip().lower() in stopwords}
   cleaned_neg_dict = {k.strip():v for (k, v) in neg_dict.items() if not k.strip().lower() in stopwords}
-  
   @app.route('/data')
   def return_token_dicts():
       
       return {
-          'PositiveList' : list(cleaned_pos_dict.items())[:5],
-          'NegativeList' : list(cleaned_neg_dict.items())[:5]
+          'PositiveDict' : list(cleaned_pos_dict.items())[:5],
+          'NegativeDict' : list(cleaned_neg_dict.items())[:5]
       } 
       
   app.run(debug=True)
