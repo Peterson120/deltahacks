@@ -35,7 +35,7 @@ function Box(props) {
 								<ol key={index} className="list-disc">
 									<li
 											id="press"
-											className="text-[#FFD178] font-bold text-2xl transition-transform hover:translate-x-5 hover:cursor-pointer"
+											className="text-[#FFD178] font-bold transition-transform hover:translate-x-5 hover:cursor-pointer"
 											onClick={addBox}
 									>
 										{data.name}
