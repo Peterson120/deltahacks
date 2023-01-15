@@ -13,6 +13,7 @@ export default function Nav() {
     infoContainer.classList.add("hidden");
     homeContainer.classList.remove("absolute");
     homeContainer.classList.remove("animate__backOutUp");
+    homeContainer.classList.remove("hide");
     fadeDown.forEach((element) => {
       element.classList.remove("animate__fadeOutDown");
     });
@@ -20,7 +21,7 @@ export default function Nav() {
   };
 
   return (
-    <Navbar className="self-start py-1 lg:py-2 flex flex-row mt-5 border-0">
+    <Navbar className="self-start py-1 lg:py-2 flex flex-row ml-10 mt-5 border-0">
       <Rocket className="rocket" />
       <button
         onMouseDown={reset}

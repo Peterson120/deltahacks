@@ -10,13 +10,14 @@ export function Homepage() {
       element.classList.add("animate__fadeOutDown");
     });
     fadeUp.classList.add("animate__backOutUp");
+  };
 
+  const hide = () => {
     const infoPage = document.getElementById("info-page");
+    document.getElementById("home-container").classList.add("hide");
     infoPage.classList.remove("hidden");
     infoPage.classList.add("block");
   };
-
-  const hide = () => {document.getElementById("home-container").classList.add("hide")};
 
   return (
     <div className="relative flex flex-col items-center">
