@@ -13,7 +13,7 @@ export default function Nav() {
             <Typography
                 as="a"
                 href="#"
-                className="ml-3 title tracking-wide drop-shadow-2xl cursor-pointer py-2 font-extrabold">
+                className="title tracking-wide drop-shadow-2xl cursor-pointer pt-8 font-extrabold">
                 <span>{name}</span>
             </Typography>
         </Navbar>
