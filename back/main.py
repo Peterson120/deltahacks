@@ -109,8 +109,12 @@ app = Flask(__name__)
 def main():
   pos, neg = class_reviews()
   pos_dict, neg_dict = tokenize(pos, neg)
-  cleaned_pos_dict = dict(sorted({k.strip():v for (k, v) in pos_dict.items() if not k.strip().lower() in stopwords}.items(), key=lambda item: item[1], reverse=True))
-  cleaned_neg_dict = dict(sorted({k.strip():v for (k, v) in neg_dict.items() if not k.strip().lower() in stopwords}.items(), key=lambda item: item[1], reverse=True))
+  cleaned_pos_dict = dict(sorted({k.upper().strip():v for (k, v) in pos_dict.items() if not k.strip().lower() in
+  stopwords}
+  .items(), key=lambda item: item[1], reverse=True))
+  cleaned_neg_dict = dict(sorted({k.strip().upper():v for (k, v) in neg_dict.items() if not k.strip().lower() in
+  stopwords}
+  .items(), key=lambda item: item[1], reverse=True))
 
   print(cleaned_pos_dict)
   print(cleaned_neg_dict)
