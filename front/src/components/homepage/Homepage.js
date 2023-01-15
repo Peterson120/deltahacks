@@ -2,7 +2,7 @@ import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
 
-export function Homepage() {
+export function Homepage(prop) {
   const goAnimate = () => {
     const fadeDown = document.querySelectorAll(".fade-down");
     const fadeUp = document.querySelector(".fade-up");
@@ -54,6 +54,7 @@ export function Homepage() {
       </div>
       <div>
         <button
+          id="launch"
           onMouseDown={goAnimate}
           onAnimationEnd={hide}
           className="animate__animated fade-down text-white border-3 p-5 mt-5 font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
