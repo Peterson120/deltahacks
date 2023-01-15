@@ -22,7 +22,6 @@ function App() {
 
       await fetch("/data").then((res) =>
         res.json().then((data) => {
-          console.log(data);
           for (let i = 0; i < data.PositiveList.length; i++) {
             let dataObjPos = {};
             let dataObjNeg = {};

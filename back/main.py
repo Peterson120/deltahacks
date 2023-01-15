@@ -13,7 +13,7 @@ inputs=["The waiter got my order wrong",
 "I had to wait for over and hour for my food"
 "Patricia is the rudest waitress I've ever met",
 "The restaurant was unclean",
-"I had an excellent dinner at McDonald's",
+"I had an excellent dinner at McDonalds",
 "I enjoyed Bob's entree recommendations",
 "The restaurant was beautiful inside",
 "The food was served in a good portion",
