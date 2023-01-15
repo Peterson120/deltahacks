@@ -9,10 +9,10 @@ stopwords = ["0o", "0s", "3a", "3b", "3d", "6b", "6o", "a", "a1", "a2", "a3", "a
 pos_reviews = []
 neg_reviews = []
 
-inputs=["The waiter got my order wrong",
+inputs=["The server got my order wrong",
 "I had to wait for over and hour for my food",
 "The wait was one of the worst I have ever seen",
-"Pat is the rudest waiter I have ever met",
+"Pat is the rudest server I have ever met",
 "The restaurant was unclean, so was my order",
 "I had an excellent dinner",
 "The dinner was delicious, I can not recommend this place enough",
