@@ -1,16 +1,17 @@
-import './styles.css';
-import Container from 'react-bootstrap/Container';
-import Box from './components/Box/Box';
+import "./styles.css";
+import Box from "./components/Box/Box";
+import Nav from "./components/Nav/Nav";
 
 function App() {
-  return (
-    <Container>
-      
-      <Box></Box>
-      <Box></Box>
-      <Box></Box>
-    </Container>
-);
+    return (
+        <div>
+            <Nav></Nav>
+            <div className="flex flex-row">
+                <Box></Box>
+                <Box></Box>
+            </div>
+        </div>
+    );
 }
 
 export default App;

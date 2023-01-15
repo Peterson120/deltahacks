@@ -1,13 +1,14 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
 import './Box.css';
 
-export default function Box() {
-    return (
-        <Container>
-            <div className="box">
-                Hi
+class Box extends React.Component {
+    render() {
+        return (
+            <div className="container flex justify-center items-center">
+                <div className="box flex items-center">
+                    {this.props.children}
+                </div>
             </div>
-        </Container>
-    );
-}
+        );
+    }
+} export default Box;
