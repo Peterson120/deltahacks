@@ -2,35 +2,21 @@ import React from "react";
 import "./Box.css";
 
 function Box(props) {
-	const addBox = (e) => {
-		const staticArr = [
-			"The waiter got my order wrong",
-			"I had to wait for over and hour for my food",
-			"Patricia is the rudest waitress I've ever met",
-			"The restaurant was unclean",
-			"I had an excellent dinner at McDonalds",
-			"I enjoyed Bob's entree recommendations",
-			"The restaurant was beautiful inside",
-			"The food was served in a good portion",
-			"I ordered a pizza",
-			"The food was mediocre",
-		];
+  const addBox = (e) => {
+    const modal = document.querySelector(".modal");
+    modal.classList.add("block");
+    modal.classList.remove("hidden");
 
-		const modal = document.querySelector(".modal");
-		modal.classList.add("block");
-		modal.classList.remove("hidden");
+    const info = document.getElementById("info");
+    info.innerText = "";
 
-		const info = document.getElementById("info");
-		info.innerText = "";
-
-		const rightData = e.target.innerText;
-
-		for (let i = 0; i < staticArr.length; i++) {
-			if (staticArr[i].includes(rightData)) {
-				info.innerText += `- ${staticArr[i]} \n`;
-			}
-		}
-	};
+    const rightData = e.target.innerText;
+    for (let i = 0; i < props.sents.length; i++) {
+      if (props.sents[i].includes(rightData)) {
+        info.innerText += `- ${props.sents[i]} \n`;
+      }
+    }
+  };
 
 	const closeModal = () => {
 		const modal = document.querySelector(".modal");

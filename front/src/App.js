@@ -15,6 +15,14 @@ function App() {
     NegativeList: [],
   });
 
+  const [posSent, setPosSent] = useState({
+    positiveSent: [],
+  });
+
+  const [negSent, setNegSent] = useState({
+    positiveSent: [],
+  });
+
   useEffect(() => {
     async function loadTable() {
       let posArr = [];
@@ -35,6 +43,8 @@ function App() {
           }
           setPosData(posArr);
           setNegData(negArr);
+          setPosSent(data.PositiveInput);
+          setNegSent(data.NegativeInput);
         })
       );
     }
@@ -44,24 +54,25 @@ function App() {
   });
 
   return (
-          <div>
-            <div id="home-container" className="h-screen fadeIn bg-darkBg">
-              <Homepage/>
-            </div>
-            <div ref={infoRef} id="info-page" className="hidden fadeIn">
-              <Nav/>
-              <div className="flex justify-center items-center">
-                <div className="main flex flex-row items-center">
-                  <Box title="Positive" className="box" datas={posData}>
-                    <p>Hi</p>
-                  </Box>
-                  <Box id="b2" title="Negative" datas={negData}>
-                    <p>Bye</p>
-                  </Box>
-                </div>
-              </div>
-            </div>
+    <div>
+      <div id="home-container" className="h-screen fadeIn bg-darkBg">
+        <Homepage />
+      </div>
+      <div ref={infoRef} id="info-page" className="hidden fadeIn">
+        <Nav />
+        <div className="flex justify-center items-center">
+          <div className="main flex flex-row items-center">
+            <Box title="Positive" datas={posData} sents={posSent}>
+              <p>Hi</p>
+            </Box>
+            <Box title="Negative" datas={negData} sents={negSent}>
+              <p>Bye</p>
+            </Box>
           </div>
+        </div>
+      </div>
+    </div>
   );
 }
+
 export default App;

@@ -10,12 +10,15 @@ pos_reviews = []
 neg_reviews = []
 
 inputs=["The waiter got my order wrong",
-"I had to wait for over and hour for my food"
-"Patricia is the rudest waitress I've ever met",
-"The restaurant was unclean",
-"I had an excellent dinner at McDonalds",
+"I had to wait for over and hour for my food",
+"The wait was one of the worst I have ever seen",
+"Pat is the rudest waiter I have ever met",
+"The restaurant was unclean, so was my order",
+"I had an excellent dinner",
+"The dinner was delicious, I can not recommend this place enough",
 "I enjoyed Bob's entree recommendations",
 "The restaurant was beautiful inside",
+"The restaurant provided a beautiful view of the city",
 "The food was served in a good portion",
 "I ordered a pizza",
 "The food was mediocre"]
@@ -106,14 +109,19 @@ app = Flask(__name__)
 def main():
   pos, neg = class_reviews()
   pos_dict, neg_dict = tokenize(pos, neg)
-  cleaned_pos_dict = {k.strip():v for (k, v) in pos_dict.items() if not k.strip().lower() in stopwords}
-  cleaned_neg_dict = {k.strip():v for (k, v) in neg_dict.items() if not k.strip().lower() in stopwords}
+  cleaned_pos_dict = dict(sorted({k.strip():v for (k, v) in pos_dict.items() if not k.strip().lower() in stopwords}.items(), key=lambda item: item[1], reverse=True))
+  cleaned_neg_dict = dict(sorted({k.strip():v for (k, v) in neg_dict.items() if not k.strip().lower() in stopwords}.items(), key=lambda item: item[1], reverse=True))
+
+  print(cleaned_pos_dict)
+  print(cleaned_neg_dict)
   @app.route('/data')
   def return_token_dicts():
       
       return {
           'PositiveList' : list(cleaned_pos_dict.items())[:5],
-          'NegativeList' : list(cleaned_neg_dict.items())[:5]
+          'NegativeList' : list(cleaned_neg_dict.items())[:5],
+          'PositiveInput' : pos,
+          'NegativeInput' : neg
       } 
       
   app.run(debug=True)
