@@ -10,7 +10,7 @@ pos_reviews = []
 neg_reviews = []
 
 
-# TODO: Pull from front-end
+#TODO Pull from front-end
 inputs=[
   "This item was broken when it arrived",
   "The product is very amazing",
