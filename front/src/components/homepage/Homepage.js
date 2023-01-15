@@ -2,7 +2,7 @@ import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
 
-export function Homepage() {
+export function Homepage(prop) {
   const goAnimate = () => {
     const fadeDown = document.querySelectorAll(".fade-down");
     const fadeUp = document.querySelector(".fade-up");
@@ -10,13 +10,15 @@ export function Homepage() {
       element.classList.add("animate__fadeOutDown");
     });
     fadeUp.classList.add("animate__backOutUp");
+    document.getElementById("info-page").classList.add("fadeIn");
+  };
 
+  const hide = () => {
     const infoPage = document.getElementById("info-page");
+    document.getElementById("home-container").classList.add("hide");
     infoPage.classList.remove("hidden");
     infoPage.classList.add("block");
   };
-
-  const hide = () => {document.getElementById("home-container").classList.add("hide")};
 
   return (
     <div className="relative flex flex-col items-center">
@@ -53,9 +55,10 @@ export function Homepage() {
       </div>
       <div>
         <button
+          id="launch"
           onMouseDown={goAnimate}
           onAnimationEnd={hide}
-          className="animate__animated fade-down text-white border-3 p-5 mt-5 font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
+          className="animate__animated fade-down text-white border-3 px-5 py-3 mt-5 font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
         >
           Launch!
         </button>
