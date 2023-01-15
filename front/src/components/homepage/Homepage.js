@@ -53,7 +53,7 @@ export function Homepage(prop) {
                         alt="stars"
                         draggable="false"></img>
                 </div>
-                <div className="animate__animated fade-down text-white text-7xl font-bold absolute top-1/2">
+                <div className="animate__animated fade-down head-text">
                     {Consts.name}
                 </div>
             </div>

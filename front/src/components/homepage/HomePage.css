@@ -18,3 +18,11 @@
     margin-bottom: 0;
     margin-top: auto;
 }
+
+.head-text {
+    font-size: 500%;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 45vh;
+}
