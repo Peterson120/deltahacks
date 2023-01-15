@@ -1,5 +1,6 @@
 import cohere
 from cohere.classify import Example
+from flask import Flask
 
 co = cohere.Client('HRS65KTVg361twQCYspM1P2ppBmT8fQxN8DqWQ8k')
 
@@ -97,15 +98,22 @@ def tokenize(pos_reviews, neg_reviews):
   
   return pos_words, neg_words
 
+app = Flask(__name__)
+
 def main():
   pos, neg = class_reviews()
   pos_dict, neg_dict = tokenize(pos, neg)
   cleaned_pos_dict = {k.strip():v for (k, v) in pos_dict.items() if not k.strip().lower() in stopwords}
   cleaned_neg_dict = {k.strip():v for (k, v) in neg_dict.items() if not k.strip().lower() in stopwords}
-  print(cleaned_pos_dict)
-  print(cleaned_neg_dict)
-
-  
+  @app.route('/data')
+  def return_token_dicts():
+      
+      return {
+          'PositiveDict' : list(cleaned_pos_dict.items())[:5],
+          'NegativeDict' : list(cleaned_neg_dict.items())[:5]
+      } 
+      
+  app.run(debug=True)
  
 if __name__ == "__main__":
   main()
