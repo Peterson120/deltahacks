@@ -11,11 +11,14 @@ neg_reviews = []
 
 inputs=["The waiter got my order wrong",
 "I had to wait for over and hour for my food",
-"Patricia is the rudest waitress I've ever met",
+"The wait was one of the longest I've ever seen"
+"Pat is the rudest waiter I've ever met",
 "The restaurant was unclean",
-"I had an excellent dinner at McDonalds",
+"I had an excellent dinner",
+"The dinner was delicious - I can't reccomend this place enough"
 "I enjoyed Bob's entree recommendations",
 "The restaurant was beautiful inside",
+"The restaurant provided a beautiful view of the city"
 "The food was served in a good portion",
 "I ordered a pizza",
 "The food was mediocre"]
