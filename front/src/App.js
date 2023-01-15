@@ -43,15 +43,6 @@ function App() {
     btn.addEventListener("click", loadTable);
   });
 
-  const pop = () => {
-    const popup = document.getElementById("popup");
-    if (popup.classList.contains("hidden")) {
-      document.getElementById("boxes").classList.add("hidden");
-      popup.classList.remove("hidden");
-      console.log("show");
-    }
-  };
-
   return (
     <div>
       <div id="home-container" className="h-screen fadeIn bg-darkBg">
@@ -61,10 +52,10 @@ function App() {
         <Nav />
         <div className="flex justify-center items-center">
           <div className="main flex flex-row items-center">
-            <Box title="Positive">
+            <Box title="Positive" datas={posData}>
               <p>Hi</p>
             </Box>
-            <Box id="b2" title="Negative">
+            <Box title="Negative" datas={negData}>
               <p>Bye</p>
             </Box>
           </div>
