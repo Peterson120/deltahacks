@@ -65,7 +65,7 @@ function App() {
             <Box title="Positive" datas={posData} sents={posSent}>
               <p>Hi</p>
             </Box>
-            <Box title="Negative" datas={negData} sents={negSent}>
+            <Box id="b2" title="Negative" datas={negData} sents={negSent}>
               <p>Bye</p>
             </Box>
           </div>
