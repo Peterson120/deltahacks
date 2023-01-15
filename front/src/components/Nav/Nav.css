@@ -1,4 +1,5 @@
 .title {
+    padding-top: 4vh;
     font-size: 2.5vw;
     color: white;
     text-shadow:
@@ -16,6 +17,9 @@
     -moz-transform: rotate(30deg);
     -ms-transform: rotate(30deg);
     -o-transform: rotate(30deg);
+}
+
+.float {
     animation-name : move;
     animation-iteration-count : infinite;
     animation-direction : alternate;
@@ -23,8 +27,19 @@
 }
 
 @keyframes move {
-    from {
-        transform: translateY(0px) translateX(15px)rotate(30deg);
-    }
+    from {transform: translateY(0px) translateX(15px)rotate(30deg);}
     to {transform: translateY(30px) translateX(0px) rotate(30deg);}
+}
+
+.exit {
+    animation-name : leave;
+    animation-iteration-count : 1;
+    animation-duration : 1.2s;
+    transition-delay: 0s;
+    transition-timing-function: linear;
+}
+
+@keyframes leave {
+    from {transform: translateY(30px) translateX(0px)rotate(30deg);}
+    to {transform: translateY(-12vh) translateX(5vw) rotate(30deg);}
 }
