@@ -1,7 +1,6 @@
 import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
-import Button from "react-bootstrap/Button";
 import React from "react";
 import "./HomePage.css";
 import { Consts } from "../../consts";

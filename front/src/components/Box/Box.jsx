@@ -2,10 +2,34 @@ import React from "react";
 import "./Box.css";
 
 function Box(props) {
-  const addBox = () => {
+  const addBox = (e) => {
+    const staticArr = [
+      "The waiter got my order wrong",
+      "I had to wait for over and hour for my food",
+      "Patricia is the rudest waitress I've ever met",
+      "The restaurant was unclean",
+      "I had an excellent dinner at McDonalds",
+      "I enjoyed Bob's entree recommendations",
+      "The restaurant was beautiful inside",
+      "The food was served in a good portion",
+      "I ordered a pizza",
+      "The food was mediocre",
+    ];
+
     const modal = document.querySelector(".modal");
     modal.classList.add("block");
     modal.classList.remove("hidden");
+
+    const info = document.getElementById("info");
+    info.innerText = "";
+
+    const rightData = e.target.innerText;
+
+    for (let i = 0; i < staticArr.length; i++) {
+      if (staticArr[i].includes(rightData)) {
+        info.innerText += `- ${staticArr[i]} \n`;
+      }
+    }
   };
 
   const closeModal = () => {
@@ -35,14 +59,14 @@ function Box(props) {
           ))}
         </div>
         <div className="modal hidden fixed left-0 top-0 w-full h-full overflow-auto bg-darkBg">
-          <div className="border-2 border-solid my-[15%] mx-auto p-[20px] w-[400px] rounded">
+          <div className="border-2 border-solid border-[#FFD178] my-[15%] mx-auto p-[20px] w-[400px] rounded">
             <span
               onClick={closeModal}
-              className="float-right text-xl font-bold hover:text-[black] hover:no-underline hover:cursor-pointer"
+              className="float-right text-xl font-bold text-[#FFD178] hover:text-[#FFD178] hover:no-underline hover:cursor-pointer"
             >
               &times;
             </span>
-            <h1>hello world</h1>
+            <h1 id="info" className="text-[#FFD178]"></h1>
           </div>
         </div>
       </div>
