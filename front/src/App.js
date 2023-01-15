@@ -15,6 +15,14 @@ function App() {
     NegativeList: [],
   });
 
+  const [posSent, setPosSent] = useState({
+    positiveSent: [],
+  });
+
+  const [negSent, setNegSent] = useState({
+    positiveSent: [],
+  });
+
   useEffect(() => {
     async function loadTable() {
       let posArr = [];
@@ -35,6 +43,8 @@ function App() {
           }
           setPosData(posArr);
           setNegData(negArr);
+          setPosSent(data.PositiveInput);
+          setNegSent(data.NegativeInput);
         })
       );
     }
@@ -52,10 +62,10 @@ function App() {
         <Nav />
         <div className="flex justify-center items-center">
           <div className="main flex flex-row items-center">
-            <Box title="Positive" datas={posData}>
+            <Box title="Positive" datas={posData} sents={posSent}>
               <p>Hi</p>
             </Box>
-            <Box title="Negative" datas={negData}>
+            <Box title="Negative" datas={negData} sents={negSent}>
               <p>Bye</p>
             </Box>
           </div>

@@ -10,7 +10,7 @@ pos_reviews = []
 neg_reviews = []
 
 inputs=["The waiter got my order wrong",
-"I had to wait for over and hour for my food"
+"I had to wait for over and hour for my food",
 "Patricia is the rudest waitress I've ever met",
 "The restaurant was unclean",
 "I had an excellent dinner at McDonalds",
@@ -113,7 +113,9 @@ def main():
       
       return {
           'PositiveList' : list(cleaned_pos_dict.items())[:5],
-          'NegativeList' : list(cleaned_neg_dict.items())[:5]
+          'NegativeList' : list(cleaned_neg_dict.items())[:5],
+          'PositiveInput' : pos,
+          'NegativeInput' : neg
       } 
       
   app.run(debug=True)
