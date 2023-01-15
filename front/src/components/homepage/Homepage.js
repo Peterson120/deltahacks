@@ -3,6 +3,8 @@ import smoke from "./smoke.png";
 import stars from "./stars.png";
 
 export function Homepage() {
+  const goAnimate = () => {};
+
   return (
     <div className="relative flex flex-col items-center">
       <div className="text-center flex flex-col items-center relative pt-8">
@@ -34,7 +36,10 @@ export function Homepage() {
         <input type="file" className="text-white mt-[35px]"></input>
       </div>
       <div>
-        <button className="text-4xl bg-blueBg text-white font-bold rounded-full border-solid border-blue border-2 p-4">
+        <button
+          onMouseDown={goAnimate}
+          className="text-white border-3 p-5 mt-5 font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
+        >
           Launch!
         </button>
       </div>

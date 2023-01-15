@@ -11,7 +11,7 @@ pos_reviews = []
 neg_reviews = []
 
 
-# TODO: Pull from front-end
+#TODO Pull from front-end
 inputs=[
   "This item was broken when it arrived",
   "The product is very amazing",
@@ -111,4 +111,3 @@ def main():
  
 if __name__ == "__main__":
   main()
->>>>>>>>> Temporary merge branch 2
