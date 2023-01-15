@@ -26,7 +26,7 @@ function Box(props) {
 
   return (
     <div className="mt-auto mb-auto flex justify-center">
-      <div className="box flex border-2 border-solid border-[#FFD178]">
+      <div className="box flex">
         <div className="gradient self-start flex justify-center" id={props.id}>
           <h2 className="title-text">{props.title}</h2>
         </div>
@@ -45,7 +45,7 @@ function Box(props) {
           ))}
         </div>
         <div className="modal hidden fixed left-0 top-0 mt-1/2 w-full h-screen bg-darkBg flex items-center">
-          <div className="mx-auto box flex justify-center">
+          <div className="border-2 border-solid border-[#FFD178] mx-auto box flex justify-center">
             <div className="gradient self-start flex items-center">
               <span
                 onClick={closeModal}
