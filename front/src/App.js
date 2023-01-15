@@ -4,15 +4,17 @@ import Nav from "./components/Nav/Nav";
 
 function App() {
     return (
-        <div className="h-screen w-screen flex items-center">
-            <Nav/>
-            <div className="main flex flex-row">
-                <Box>
+        <div className="">
+            <Nav />
+            <div className="grid">
+                <div className="main flex flex-row self-center justify-self-center">
+                    <Box>
 
-                </Box>
-                <Box>
+                    </Box>
+                    <Box>
 
-                </Box>
+                    </Box>
+                </div>
             </div>
         </div>
     );

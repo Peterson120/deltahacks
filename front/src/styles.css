@@ -6,4 +6,5 @@
 .main {
     display: flex;
     gap: 5%;
+    margin-top: 3%;
 }

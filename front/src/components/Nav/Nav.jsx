@@ -8,12 +8,12 @@ import { name } from '../../consts';
 
 export default function Nav() {
     return (
-        <Navbar className="self-start pl-40 max-w-screen-xl py-2 lg:py-4 flex flex-row items-center">
+        <Navbar className="pl-40 max-w-screen-xl py-1 lg:py-2 flex flex-row mt-5">
             <Rocket/>
             <Typography
-                as="h3"
+                as="a"
                 href="#"
-                className="ml-3 title tracking-wide drop-shadow-2xl mr-4 cursor-pointer py-2 font-extrabold">
+                className="ml-3 title tracking-wide drop-shadow-2xl cursor-pointer py-2 font-extrabold">
                 <span>{name}</span>
             </Typography>
         </Navbar>
