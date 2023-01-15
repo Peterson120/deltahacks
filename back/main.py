@@ -14,8 +14,16 @@ response = cohere.client.Classifications([])
 app = Flask(__name__)
 
 
-#TODO Pull from front-end
-inputs = []
+inputs=["The waiter got my order wrong",
+"I had to wait for over and hour for my food",
+"Patricia is the rudest waitress I've ever met",
+"The restaurant was unclean",
+"I had an excellent dinner at McDonalds",
+"I enjoyed Bob's entree recommendations",
+"The restaurant was beautiful inside",
+"The food was served in a good portion",
+"I ordered a pizza",
+"The food was mediocre"]
 
 @app.route("/acceptData", methods=["POST"])
 def get_data():
@@ -106,8 +114,11 @@ def tokenize(pos_reviews, neg_reviews):
 def main():
   pos, neg = class_reviews()
   pos_dict, neg_dict = tokenize(pos, neg)
-  cleaned_pos_dict = {k.strip():v for (k, v) in pos_dict.items() if not k.strip().lower() in stopwords}
-  cleaned_neg_dict = {k.strip():v for (k, v) in neg_dict.items() if not k.strip().lower() in stopwords}
+  cleaned_pos_dict = dict(sorted({k.strip():v for (k, v) in pos_dict.items() if not k.strip().lower() in stopwords}.items()))
+  cleaned_neg_dict = dict(sorted({k.strip():v for (k, v) in neg_dict.items() if not k.strip().lower() in stopwords}.items()))
+
+  print(cleaned_pos_dict)
+  print(cleaned_neg_dict)
   
   @app.route('/data')
   def return_token_dicts():
