@@ -8,8 +8,8 @@ import { name } from '../../consts';
 
 export default function Nav() {
     return (
-        <Navbar className="pl-40 max-w-screen-xl py-1 lg:py-2 flex flex-row mt-5">
-            <Rocket/>
+        <Navbar className="max-w-screen-xl py-1 lg:py-2 flex flex-row mt-5">
+            <Rocket className="rocket"/>
             <Typography
                 as="a"
                 href="#"

@@ -7,7 +7,7 @@ function App() {
         <div className="">
             <Nav />
             <div className="grid">
-                <div className="main flex flex-row self-center justify-self-center">
+                <div className="main flex flex-row self-center justify-self-center item-center justify-center">
                     <Box>
 
                     </Box>
