@@ -1,7 +1,7 @@
 import { Navbar } from "@material-tailwind/react";
 import "./Nav.css";
 import { ReactComponent as Rocket } from "./rocketship.svg";
-import { name } from "../../consts";
+import { Consts } from "../../consts";
 
 export default function Nav() {
   const reset = () => {
@@ -20,13 +20,13 @@ export default function Nav() {
   };
 
   return (
-    <Navbar className="self-start py-1 lg:py-2 flex flex-row mt-5">
+    <Navbar className="self-start py-1 lg:py-2 flex flex-row mt-5 border-0">
       <Rocket className="rocket" />
       <button
         onMouseDown={reset}
         className="title tracking-wide drop-shadow-2xl cursor-pointer pt-8 font-extrabold"
       >
-        <span>{name}</span>
+        <span>{Consts.name}</span>
       </button>
     </Navbar>
   );
