@@ -2,7 +2,7 @@ import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
 
-export function Homepage() {
+export function Homepage(props) {
   const goAnimate = () => {
     const fadeDown = document.querySelectorAll(".fade-down");
     const fadeUp = document.querySelector(".fade-up");
@@ -11,12 +11,14 @@ export function Homepage() {
     });
     fadeUp.classList.add("animate__backOutUp");
 
-    const homePage = document.getElementById("home-container");
     const infoPage = document.getElementById("info-page");
     infoPage.classList.remove("hidden");
     infoPage.classList.add("block");
+  };
 
-    homePage.classList.add("absolute");
+  const moveDown = () => {
+    console.log("hasd");
+    props.scrollTo.current.scrollIntoView();
   };
 
   return (
@@ -28,6 +30,7 @@ export function Homepage() {
             src={rocket}
             alt="rocket ship"
             draggable="false"
+            onAnimationEnd={moveDown}
           ></img>
           <img
             className="animate__animated fade-down object-contain"
@@ -45,20 +48,22 @@ export function Homepage() {
         <div className="animate__animated fade-down text-white text-4xl font-bold absolute top-1/2">
           SentiMate
         </div>
-      </div>
-      <div>
-        <input
-          type="file"
-          className="animate__animated fade-down text-white mt-[35px]"
-        ></input>
-      </div>
-      <div>
-        <button
-          onMouseDown={goAnimate}
-          className="animate__animated fade-down text-white border-3 p-5 mt-5 font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
-        >
-          Launch!
-        </button>
+        <div className="flex">
+          <div>
+            <input
+              type="file"
+              className="animate__animated fade-down text-white mt-[35px]"
+            ></input>
+          </div>
+          <div>
+            <button
+              onMouseDown={goAnimate}
+              className="animate__animated fade-down text-white border-3 p-5 mt-5 font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
+            >
+              Launch!
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
