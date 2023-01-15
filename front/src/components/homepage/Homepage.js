@@ -17,6 +17,7 @@ export function Homepage(prop) {
     document.getElementById("home-container").classList.add("hide");
     infoPage.classList.remove("hidden");
     infoPage.classList.add("block");
+    infoPage.classList.toggle('fade');
   };
 
   return (
