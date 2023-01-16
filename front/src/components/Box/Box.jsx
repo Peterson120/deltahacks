@@ -1,4 +1,3 @@
-import React from "react";
 import "./Box.css";
 
 function Box(props) {
@@ -6,6 +5,9 @@ function Box(props) {
     const modal = document.querySelector(".modal");
     modal.classList.add("block");
     modal.classList.remove("hidden");
+
+    const switchTitle = document.getElementById("switch");
+    switchTitle.innerText = props.title;
 
     const info = document.getElementById("info");
     info.innerText = "";
@@ -66,7 +68,9 @@ function Box(props) {
                   />
                 </svg>
               </span>
-              <h2 className="title-text mx-auto">{props.title}</h2>
+              <h2 id="switch" className="title-text mx-auto">
+                {props.title}
+              </h2>
             </div>
             <h1 id="info" className="p-[20px] text-[#FFD178] text-center"></h1>
           </div>
