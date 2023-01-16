@@ -63,10 +63,8 @@ function App() {
         <div className="flex justify-center items-center">
           <div className="main flex flex-row items-center">
             <Box title="Positive" datas={posData} sents={posSent}>
-              <p>Hi</p>
             </Box>
             <Box id="b2" title="Negative" datas={negData} sents={negSent}>
-              <p>Bye</p>
             </Box>
           </div>
         </div>

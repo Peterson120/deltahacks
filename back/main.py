@@ -1,4 +1,5 @@
 import cohere
+import os
 from cohere.classify import Example
 from flask import Flask
 
@@ -131,4 +132,5 @@ def main():
   app.run(debug=True)
  
 if __name__ == "__main__":
+#   os.system("cd ../front && npm i && npm start")
   main()
