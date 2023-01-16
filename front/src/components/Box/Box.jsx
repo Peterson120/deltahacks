@@ -28,7 +28,7 @@ function Box(props) {
 
   return (
     <div className="mt-auto mb-auto flex justify-center">
-      <div className="box flex">
+      <div className="box flex border-2 border-solid border-[#FFD178]">
         <div className="gradient self-start flex justify-center" id={props.id}>
           <h2 className="title-text">{props.title}</h2>
         </div>
