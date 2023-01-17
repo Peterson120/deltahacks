@@ -18,7 +18,7 @@ export function Homepage(prop) {
 
   const hide = () => {
     const infoPage = document.getElementById("info-page");
-    document.getElementById("home-container").classList.add("hide");
+    document.getElementById("home-container").classList.add("hidden");
     infoPage.classList.remove("hidden");
     infoPage.classList.add("block");
   };

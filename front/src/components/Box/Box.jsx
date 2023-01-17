@@ -34,9 +34,9 @@ function Box(props) {
         <div className="gradient self-start flex justify-center" id={props.id}>
           <h2 className="title-text">{props.title}</h2>
         </div>
-        <div className="flex flex-col w-full h-full justify-center">
+        <div className="flex flex-col w-full h-full justify-center overflow-y-scroll">
           {data.map((data, index) => (
-            <ol key={index} className="list-disc">
+            <ol key={index} className="list-disc list-none">
               <li
                 id="press"
                 className="text-[#FFD178] font-bold transition-transform hover:translate-x-5 hover:cursor-pointer"
@@ -44,7 +44,7 @@ function Box(props) {
               >
                 {data.name}
               </li>
-              <li className="text-white list-none">{data.count} occurences</li>
+              <li className="text-white">{data.count} occurrences</li>
             </ol>
           ))}
         </div>
@@ -74,7 +74,7 @@ function Box(props) {
                 {props.title}
               </h2>
             </div>
-            <h1 id="info" className="p-[20px] text-[#FFD178] text-center"></h1>
+            <h1 id="info" className="p-[20px] text-[#FFD178] text-center h-full w-full overflow-y-scroll"></h1>
           </div>
         </div>
       </div>
