@@ -72,7 +72,7 @@ function Box(props) {
                 {props.title}
               </h2>
             </div>
-            <h1 id="info" className="p-[20px] text-[#FFD178] text-center"></h1>
+            <h1 id="info" className="p-[20px] text-[#FFD178] text-center overflow-y-scroll h-full w-full"></h1>
           </div>
         </div>
       </div>
