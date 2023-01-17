@@ -38,3 +38,13 @@ How to use Figma to generate higher-quality and tailored graphics.
 
 SentiView would like to be able to produce graphs that display trends over time in customer satisfaction to give small businesses a way to assess their improvement.
 Provide bespoke recommendations to businesses.
+
+## Try Sentiview
+
+Open terminal and go to the cloned directory
+
+    npm start --prefix front
+
+In a new terminal
+
+    python3 main.py
