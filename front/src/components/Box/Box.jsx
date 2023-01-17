@@ -32,7 +32,7 @@ function Box(props) {
         <div className="gradient self-start flex justify-center" id={props.id}>
           <h2 className="title-text">{props.title}</h2>
         </div>
-        <div className="flex flex-col w-full h-full justify-center">
+        <div className="flex flex-col w-full h-full justify-center overflow-y-scroll">
           {props.datas.map((data, index) => (
             <ol key={index} className="list-disc list-none">
               <li
