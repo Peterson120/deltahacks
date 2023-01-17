@@ -1,6 +1,8 @@
 import "./Box.css";
 
 function Box(props) {
+  const data = Array.from(props.datas);
+
   const addBox = (e) => {
     const modal = document.querySelector(".modal");
     modal.classList.add("block");
@@ -33,7 +35,7 @@ function Box(props) {
           <h2 className="title-text">{props.title}</h2>
         </div>
         <div className="flex flex-col w-full h-full justify-center">
-          {props.datas.map((data, index) => (
+          {data.map((data, index) => (
             <ol key={index} className="list-disc">
               <li
                 id="press"
