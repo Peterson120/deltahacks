@@ -42,7 +42,7 @@ function Box(props) {
               >
                 {data.name}
               </li>
-              <li className="text-white list-none">{data.count} occurences</li>
+              <li className="text-white list-none">{data.count} occurrences</li>
             </ol>
           ))}
         </div>
