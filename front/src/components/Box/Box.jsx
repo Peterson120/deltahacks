@@ -1,7 +1,7 @@
 import "./Box.css";
 
 function Box(props) {
-  const data = Array.from(props.datas);
+  const data = Array.from(props.data);
 
   const addBox = (e) => {
     const modal = document.querySelector(".modal");
@@ -34,7 +34,7 @@ function Box(props) {
         <div className="gradient self-start flex justify-center" id={props.id}>
           <h2 className="title-text">{props.title}</h2>
         </div>
-        <div className="flex flex-col w-full h-full justify-center overflow-y-scroll">
+        <div className="flex flex-col w-full h-full justify-center overflow-y-scroll overflow-x-hidden">
           {data.map((data, index) => (
             <ol key={index} className="list-disc list-none">
               <li
