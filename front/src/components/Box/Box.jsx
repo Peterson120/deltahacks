@@ -34,7 +34,7 @@ function Box(props) {
         </div>
         <div className="flex flex-col w-full h-full justify-center">
           {props.datas.map((data, index) => (
-            <ol key={index} className="list-disc">
+            <ol key={index} className="list-disc list-none">
               <li
                 id="press"
                 className="text-[#FFD178] font-bold transition-transform hover:translate-x-5 hover:cursor-pointer"
@@ -42,7 +42,7 @@ function Box(props) {
               >
                 {data.name}
               </li>
-              <li className="text-white list-none">{data.count} occurrences</li>
+              <li className="text-white">{data.count} occurrences</li>
             </ol>
           ))}
         </div>
