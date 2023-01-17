@@ -45,13 +45,10 @@
     font-weight: 600;
 }
 
-ol {
-    margin: 1vh auto;
-    text-align: center;
-}
-
 li {
     font-size: 2vh;
+    text-align: center;
+    margin: 1vh auto;
 }
 
 #press, #info {

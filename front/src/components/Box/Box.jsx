@@ -26,6 +26,8 @@ function Box(props) {
     const modal = document.querySelector(".modal");
     modal.classList.remove("block");
     modal.classList.add("hidden");
+
+    console.log(JSON.parse(props.data));
   };
 
   return (
@@ -34,9 +36,16 @@ function Box(props) {
         <div className="gradient self-start flex justify-center" id={props.id}>
           <h2 className="title-text">{props.title}</h2>
         </div>
+<<<<<<< HEAD
         <div className="flex flex-col w-full h-full justify-center">
           {data.map((data, index) => (
             <ol key={index} className="list-disc">
+=======
+        <div className="flex flex-col w-full h-full justify-center overflow-y-scroll overflow-x-hidden">
+          <ol className="list-disc list-none h-full w-full">
+          {props.data.map((data, index) => (
+            <li className="list-disc list-none margin-x-auto">
+>>>>>>> 4d8beee36289ad2fff8ab94d6af28fb86ed8013d
               <li
                 id="press"
                 className="text-[#FFD178] font-bold transition-transform hover:translate-x-5 hover:cursor-pointer"
@@ -44,9 +53,10 @@ function Box(props) {
               >
                 {data.name}
               </li>
-              <li className="text-white list-none">{data.count} occurences</li>
-            </ol>
+              <li className="text-white">{data.count} occurrences</li>
+            </li>
           ))}
+          </ol>
         </div>
         <div className="modal hidden fixed left-0 top-0 mt-1/2 w-full h-screen bg-darkBg flex items-center">
           <div className="border-2 border-solid border-[#FFD178] mx-auto box flex justify-center">
@@ -74,7 +84,7 @@ function Box(props) {
                 {props.title}
               </h2>
             </div>
-            <h1 id="info" className="p-[20px] text-[#FFD178] text-center"></h1>
+            <h1 id="info" className="p-[20px] text-[#FFD178] text-center overflow-y-scroll h-full w-full"></h1>
           </div>
         </div>
       </div>

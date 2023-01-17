@@ -18,12 +18,12 @@ export default function Nav() {
     document.getElementById("info-page").classList.add("hidden");
     homeContainer.classList.remove("absolute");
     homeContainer.classList.remove("animate__backOutUp");
-    homeContainer.classList.remove("hide");
+    homeContainer.classList.remove("hidden");
     fadeDown.forEach((element) => {
       element.classList.remove("animate__fadeOutDown");
     });
     fadeUp.classList.remove("animate__backOutUp");
-    homeContainer.classList.remove("hide");
+    homeContainer.classList.remove("hidden");
   };
 
   return (

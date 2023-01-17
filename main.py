@@ -121,16 +121,13 @@ def main():
   print(cleaned_neg_dict)
   @app.route('/data')
   def return_token_dicts():
-      
       return {
           'PositiveList' : list(cleaned_pos_dict.items())[:5],
           'NegativeList' : list(cleaned_neg_dict.items())[:5],
           'PositiveInput' : pos,
           'NegativeInput' : neg
-      } 
-      
+      }
   app.run(debug=True)
  
 if __name__ == "__main__":
-#   os.system("cd ../front && npm i && npm start")
   main()
