@@ -20,7 +20,6 @@ export function Homepage(prop) {
     const infoPage = document.getElementById("info-page");
     document.getElementById("home-container").classList.add("hidden");
     infoPage.classList.remove("hidden");
-    infoPage.classList.add("block");
   };
 
   const hiddenFileInput = React.useRef(null);
