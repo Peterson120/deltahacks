@@ -10,10 +10,10 @@ stopwords = ["0o", "0s", "3a", "3b", "3d", "6b", "6o", "a", "a1", "a2", "a3", "a
 pos_reviews = []
 neg_reviews = []
 
-inputs=["The server got my order wrong",
+inputs=["The waiter got my order wrong",
 "I had to wait for over and hour for my food",
 "The wait was one of the worst I have ever seen",
-"Pat is the rudest server I have ever met",
+"Pat is the rudest waiter I have ever met",
 "The restaurant was unclean, so was my order",
 "I had an excellent dinner",
 "The dinner was delicious, I can not recommend this place enough",
@@ -54,7 +54,7 @@ examples=[
   Example("The environment was dirty and staff were unfriendly", "negative"), 
   Example("The restaurant was well decorated", "positive"),
   Example("The restaurant was ugly", "negative"),
-  Example("The waittress named May was terribly ill-mannered", "negative"), 
+  Example("The waitress named May was terribly ill-mannered", "negative"),
   Example("My family is definitely coming back for more", "positive"), 
   Example("My family will never be coming back", "negative"), 
   Example("I ate the chicken sandwich", "neutral"), 
