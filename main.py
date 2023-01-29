@@ -1,7 +1,7 @@
 import cohere
 import os
 from cohere.classify import Example
-from flask import Flask
+from flask import Flask, request
 
 co = cohere.Client('HRS65KTVg361twQCYspM1P2ppBmT8fQxN8DqWQ8k')
 
@@ -117,8 +117,6 @@ def main():
   stopwords}
   .items(), key=lambda item: item[1], reverse=True))
 
-  print(cleaned_pos_dict)
-  print(cleaned_neg_dict)
   @app.route('/data')
   def return_token_dicts():
       return {
@@ -127,7 +125,12 @@ def main():
           'PositiveInput' : pos,
           'NegativeInput' : neg
       }
-  app.run(debug=True)
+  app.run(debug=True, port=4000)
+
+@app.route("/acceptData", methods=["POST"])
+def get_data():
+  data = request.get_json()
+  return data
  
 if __name__ == "__main__":
   main()
