@@ -1,14 +1,37 @@
 import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
-import React from "react";
 import "./HomePage.css";
-import { Consts } from "../../consts";
-import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
 
-export function Homepage() {
-  const goAnimate = () => {
+import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { Consts } from "../../consts";
+
+export function Homepage(props) {
+  const getInfo = () => {
+    const info = document.getElementById("input-info").value;
+    fetch("/acceptData", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: info,
+      }),
+    })
+      .then((data) => data.json())
+      .then((res) => {
+        props.setData(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const goAnimate = (e) => {
+    e.preventDefault();
+
+    getInfo();
+
     const fadeDown = document.querySelectorAll(".fade-down");
     const fadeUp = document.querySelector(".fade-up");
     fadeDown.forEach((element) => {
@@ -50,20 +73,28 @@ export function Homepage() {
           <div className="animate__animated fade-down head-text">
             {Consts.name}
           </div>
-        </div>
-        <div className="button animate__animated fade-down text-white text-2xl">
-          <input className="text-[black]" type="text"></input>
-        </div>
-        <div className="launch">
-          <button
-            to="/info"
-            id="launch"
-            onMouseDown={goAnimate}
+          <form
+            onSubmit={goAnimate}
             onAnimationEnd={change}
-            className="animate__animated fade-down text-white border-3 px-9 py-4 mt-5 text-xl font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
+            className="absolute top-[70vh]"
           >
-            Launch!
-          </button>
+            <div className=" justify-center animate__animated fade-down text-white text-2xl">
+              <input
+                name="data-info"
+                id="input-info"
+                className="my-0 mx-auto text-[black]"
+                type="text"
+              ></input>
+            </div>
+            <div>
+              <button
+                id="launch"
+                className="animate__animated fade-down text-white border-3 px-9 py-4 mt-5 text-xl font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
+              >
+                Launch!
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

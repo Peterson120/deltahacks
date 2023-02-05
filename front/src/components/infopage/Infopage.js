@@ -2,35 +2,30 @@ import Box from "../Box/Box";
 import Nav from "../Nav/Nav";
 import { useEffect, useRef, useState } from "react";
 
-export function InfoPage() {
+export function InfoPage(props) {
   useEffect(() => {
     async function loadTable() {
       let posArr = [];
       let negArr = [];
+      for (let i = 0; i < props.data.PositiveList.length; i++) {
+        let dataObjPos = {};
+        let dataObjNeg = {};
+        dataObjPos["name"] = props.data.PositiveList[i][0];
+        dataObjPos["count"] = props.data.PositiveList[i][1];
+        posArr.push(dataObjPos);
 
-      await fetch("/data").then((res) =>
-        res.json().then((data) => {
-          for (let i = 0; i < data.PositiveList.length; i++) {
-            let dataObjPos = {};
-            let dataObjNeg = {};
-            dataObjPos["name"] = data.PositiveList[i][0];
-            dataObjPos["count"] = data.PositiveList[i][1];
-            posArr.push(dataObjPos);
-
-            dataObjNeg["name"] = data.NegativeList[i][0];
-            dataObjNeg["count"] = data.NegativeList[i][1];
-            negArr.push(dataObjNeg);
-          }
-          setPosData(posArr);
-          setNegData(negArr);
-          setPosSent(data.PositiveInput);
-          setNegSent(data.NegativeInput);
-        })
-      );
+        dataObjNeg["name"] = props.data.NegativeList[i][0];
+        dataObjNeg["count"] = props.data.NegativeList[i][1];
+        negArr.push(dataObjNeg);
+      }
+      setPosData(posArr);
+      setNegData(negArr);
+      setPosSent(props.data.PositiveInput);
+      setNegSent(props.data.NegativeInput);
     }
 
     loadTable();
-  });
+  }, [props.data]);
 
   const infoRef = useRef(null);
 
