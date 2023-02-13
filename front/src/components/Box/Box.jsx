@@ -1,4 +1,5 @@
 import "./Box.css";
+import { motion } from 'framer-motion';
 
 function Box(props) {
   const data = Array.from(props.data);
@@ -37,13 +38,14 @@ function Box(props) {
         <div className="flex flex-col w-full h-full justify-center overflow-y-scroll overflow-x-hidden">
           {data.map((data, index) => (
             <ol key={index} className="list-disc list-none">
-              <li
+              <motion.li
                 id="press"
-                className="text-[#FFD178] font-bold transition-transform hover:translate-x-5 hover:cursor-pointer"
+                className="text-[#FFD178] font-bold hover:cursor-pointer"
                 onClick={addBox}
+                whileHover={{scale: 1.1}}
               >
                 {data.name}
-              </li>
+              </motion.li>
               <li className="text-white">{data.count} occurrences</li>
             </ol>
           ))}
