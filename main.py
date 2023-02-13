@@ -1,8 +1,7 @@
 import cohere
 import os
 from cohere.classify import Example
-from flask import Flask, request, redirect, session
-# learn what url_for is
+from flask import Flask, request
 
 app = Flask(__name__)
 
