@@ -1,5 +1,5 @@
 import "./Box.css";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 function Box(props) {
   const data = Array.from(props.data);
@@ -42,7 +42,7 @@ function Box(props) {
                 id="press"
                 className="text-[#FFD178] font-bold hover:cursor-pointer"
                 onClick={addBox}
-                whileHover={{scale: 1.1}}
+                whileHover={{ scale: 1.1 }}
               >
                 {data.name}
               </motion.li>
@@ -76,7 +76,10 @@ function Box(props) {
                 {props.title}
               </h2>
             </div>
-            <h1 id="info" className="p-[20px] text-[#FFD178] text-center h-full w-full overflow-y-scroll"></h1>
+            <h1
+              id="info"
+              className="p-[20px] text-[#FFD178] text-center h-full w-full overflow-y-scroll"
+            ></h1>
           </div>
         </div>
       </div>
