@@ -48,10 +48,12 @@ export function InfoPage(props) {
   return (
     <div ref={infoRef} id="info-page" className="fadeIn">
       <Nav />
-      <div className="fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
-        <div className="main ">
-          <Box title="Positive" data={posData} sents={posSent}></Box>
-          <Box id="b2" title="Negative" data={negData} sents={negSent}></Box>
+      <div className="flex justify-center items-center">
+        <div className="main flex flex-row items-center">
+          <div className="main ">
+            <Box title="Positive" data={posData} sents={posSent}></Box>
+            <Box id="b2" title="Negative" data={negData} sents={negSent}></Box>
+          </div>
         </div>
       </div>
     </div>
