@@ -8,7 +8,8 @@ export function InfoPage(props) {
     async function loadTable() {
       let posArr = [];
       let negArr = [];
-      for (let i = 0; i < props.data.PositiveList.length; i++) {
+      const len = props.data.PositiveList ? props.data.PositiveList.length : 0;
+      for (let i = 0; i < len; i++) {
         let dataObjPos = {};
         let dataObjNeg = {};
         dataObjPos["name"] = props.data.PositiveList[i][0];
@@ -25,7 +26,7 @@ export function InfoPage(props) {
       setNegSent(props.data.NegativeInput);
     }
     setLoading(false);
-    loadTable().then(() => {setLoading(true);});
+    loadTable().then(() => {setLoading(props.data.PositiveList !== undefined);});
   }, [props.data]);
 
   const infoRef = useRef(null);
