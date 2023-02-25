@@ -37,6 +37,7 @@ export function Homepage(props) {
       element.classList.add("animate__fadeOutDown");
     });
     fadeUp.classList.add("animate__backOutUp");
+    props.setData({});
   };
 
   const navigate = useNavigate();
