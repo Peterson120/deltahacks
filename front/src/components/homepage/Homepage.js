@@ -1,7 +1,6 @@
 import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
-import "./HomePage.css";
 
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
@@ -52,13 +51,13 @@ export function Homepage(props) {
         <div className="text-center flex flex-col items-center relative h-full">
           <div className="flex flex-col items-center h-full">
             <img
-              className="animate__animated fade-up object-contain rocket-1"
+              className="absolute animate__animated fade-up object-contain top-[12vh]"
               src={rocket}
               alt="rocket ship"
               draggable="false"
             ></img>
             <img
-              className="animate__animated fade-down object-contain smoke"
+              className="animate__animated fade-down object-contain mb-0 mt-auto"
               src={smoke}
               alt="smoke"
               draggable="false"
@@ -70,7 +69,7 @@ export function Homepage(props) {
               draggable="false"
             ></img>
           </div>
-          <div className="animate__animated fade-down head-text">
+          <div className="absolute animate__animated fade-down text-white top-[45vh] text-8xl font-bold">
             {Consts.name}
           </div>
           <form

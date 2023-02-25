@@ -1,8 +1,9 @@
-import Box from "../Box/Box";
+import Box from "./Box/Box";
 import Nav from "../Nav/Nav";
 import { useEffect, useRef, useState } from "react";
 
 export function InfoPage(props) {
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     async function loadTable() {
       let posArr = [];
@@ -23,8 +24,8 @@ export function InfoPage(props) {
       setPosSent(props.data.PositiveInput);
       setNegSent(props.data.NegativeInput);
     }
-
-    loadTable();
+    setLoading(false);
+    loadTable().then(() => {setLoading(true);});
   }, [props.data]);
 
   const infoRef = useRef(null);
@@ -50,8 +51,8 @@ export function InfoPage(props) {
       <Nav />
       <div className="fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
         <div className="main ">
-          <Box title="Positive" data={posData} sents={posSent}></Box>
-          <Box id="b2" title="Negative" data={negData} sents={negSent}></Box>
+          <Box title="Positive" data={posData} sents={posSent} loading={loading}></Box>
+          <Box id="b2" title="Negative" data={negData} sents={negSent} loading={loading}></Box>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import "./Box.css";
 import { motion } from 'framer-motion';
+import loading from './loading.gif';
 
 function Box(props) {
   const data = Array.from(props.data);
@@ -35,21 +36,21 @@ function Box(props) {
         <div className="gradient self-start flex justify-center" id={props.id}>
           <h2 className="title-text">{props.title}</h2>
         </div>
-        <div className="flex flex-col w-full h-full justify-center overflow-y-scroll overflow-x-hidden">
+        {props.loading ? <div className="flex flex-col w-full h-full justify-center overflow-y-scroll overflow-x-hidden">
           {data.map((data, index) => (
-            <ol key={index} className="list-disc list-none">
-              <motion.li
-                id="press"
-                className="text-[#FFD178] font-bold hover:cursor-pointer"
-                onClick={addBox}
-                whileHover={{scale: 1.1}}
-              >
-                {data.name}
-              </motion.li>
-              <li className="text-white">{data.count} occurrences</li>
-            </ol>
+              <ol key={index} className="list-disc list-none">
+                <motion.li
+                    id="press"
+                    className="text-[#FFD178] font-bold hover:cursor-pointer"
+                    onClick={addBox}
+                    whileHover={{scale: 1.1}}
+                >
+                  {data.name}
+                </motion.li>
+                <li className="text-white">{data.count} occurrences</li>
+              </ol>
           ))}
-        </div>
+        </div> : <img className={"m-auto"} src={loading} alt={"Loading..."} width={50} />}
         <div className="modal hidden fixed left-0 top-0 mt-1/2 w-full h-screen bg-darkBg flex items-center">
           <div className="border-2 border-solid border-[#FFD178] mx-auto box flex justify-center">
             <div className="gradient self-start flex items-center">

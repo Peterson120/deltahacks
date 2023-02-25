@@ -1,24 +1,3 @@
-.title {
-    padding-top: 4vh;
-    font-size: 2.5vw;
-    color: white;
-    text-shadow:
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
-}
-
-.rocket {
-    width: 5vw;
-    margin-left: 10%;
-    transform: rotate(30deg);
-    -webkit-transform: rotate(30deg);
-    -moz-transform: rotate(30deg);
-    -ms-transform: rotate(30deg);
-    -o-transform: rotate(30deg);
-}
-
 .float {
     animation-name : move;
     animation-iteration-count : infinite;
