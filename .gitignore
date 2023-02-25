@@ -1,0 +1,5 @@
+.env
+/lib
+/bin
+/include
+pyvenv.cfg
