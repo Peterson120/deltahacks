@@ -1,14 +1,14 @@
 import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
-
-import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import { Consts } from "../../consts";
+import React, {useCallback} from "react";
+import {useNavigate} from "react-router-dom";
+import {Consts} from "../../consts";
 
 export function Homepage(props) {
+  const [data, setData] = React.useState({});
+  const [type, setType] = React.useState("");
   const getInfo = () => {
-    const info = document.getElementById("input-info").value;
     fetch("/acceptData", {
       method: "POST",
       headers: {
@@ -16,7 +16,8 @@ export function Homepage(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        text: info,
+        text: data,
+        type: type,
       }),
     })
       .then((data) => data.json())
@@ -42,7 +43,7 @@ export function Homepage(props) {
 
   const navigate = useNavigate();
   const change = useCallback(
-    () => navigate("/info", { replace: true }),
+    () => navigate("/info", {replace: true}),
     [navigate]
   );
 
@@ -78,13 +79,14 @@ export function Homepage(props) {
             onAnimationEnd={change}
             className="absolute top-[70vh]"
           >
-            <div className=" justify-center animate__animated fade-down text-white text-2xl">
+            <input name={"type"} type={"text"} onChange={(e) => setType(e.target.value)}/>
+            <div className="justify-center animate__animated fade-down text-white text-2xl">
               <input
                 name="data-info"
-                id="input-info"
                 className="my-0 mx-auto text-[black]"
                 type="text"
-              ></input>
+                onChange={(e) => setData(e.target.value)}
+              />
             </div>
             <div>
               <button

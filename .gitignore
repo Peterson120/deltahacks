@@ -3,3 +3,5 @@
 /bin
 /include
 pyvenv.cfg
+front/node_modules
+node_modules
