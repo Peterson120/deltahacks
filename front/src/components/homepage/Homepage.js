@@ -2,12 +2,14 @@ import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
 import React, {useCallback} from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import {useNavigate} from "react-router-dom";
 import {Consts} from "../../consts";
 
 export function Homepage(props) {
   const [data, setData] = React.useState({});
-  const [type, setType] = React.useState("");
+  const [type, setType] = React.useState(0);
   const getInfo = () => {
     fetch("/acceptData", {
       method: "POST",
@@ -79,7 +81,11 @@ export function Homepage(props) {
             onAnimationEnd={change}
             className="absolute top-[70vh]"
           >
-            <input name={"type"} type={"text"} onChange={(e) => setType(e.target.value)}/>
+            <DropdownButton title="Input Type" onClick={}>
+              <Dropdown.Item onClick={() => setType(0)}>Web</Dropdown.Item>
+              <Dropdown.Item onClick={() => setType(1)}>Text</Dropdown.Item>
+              <Dropdown.Item onClick={() => setType(2)}>File</Dropdown.Item>
+            </DropdownButton>
             <div className="justify-center animate__animated fade-down text-white text-2xl">
               <input
                 name="data-info"
