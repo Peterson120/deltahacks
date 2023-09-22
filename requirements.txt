@@ -1,7 +1,5 @@
 flask
 cohere
 python-dotenv
-beautifulsoup4
 selenium
-webdriver
 webdriver-manager
