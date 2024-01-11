@@ -6,3 +6,4 @@ pyvenv.cfg
 front/node_modules
 node_modules
 .idea
+__pycache__
