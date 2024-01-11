@@ -1,6 +1,6 @@
 import cohere
 import os
-from cohere.classify import Example
+from cohere.responses.classify import Example
 from flask import Flask, request
 
 app = Flask(__name__)
