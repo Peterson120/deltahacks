@@ -84,7 +84,7 @@ export function Homepage(props) {
                 id="input-info"
                 className="my-0 mx-auto text-[black]"
                 type="text"
-              ></input>
+              />
             </div>
             <div>
               <button
