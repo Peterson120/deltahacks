@@ -79,15 +79,12 @@ export function Homepage(props) {
 						className="mt-5 absolute top-[60vh] animate__animated fade-down flex flex-col space-y-5 items-center"
 					>
 						<input
-							className="py-2 px-4 rounded-lg text-white text-xl font-bold border border-white transition-colors duration-150 hover:bg-blueBg hover:border-blueBg hover:cursor-pointer w-[10vw]"
+							className="py-2 px-4 rounded-lg text-black text-xl text-center focus:caret-transparent font-bold border border-white transition-colors duration-150 hover:bg-blueBg hover:border-blueBg hover:cursor-pointer w-[10vw]"
 							onClick={() => {
 								setDropdown(!dropdown);
 							}}
-							type="button"
-							required
-							value={
-								dropdown ? "Input Type" : inputTypes[type]
-							}
+							required="true"
+							value={dropdown ? "Input Type" : inputTypes[type]}
 						/>
 						{dropdown && (
 							<div className="bg-white flex flex-col w-[10vw] !mt-0">
