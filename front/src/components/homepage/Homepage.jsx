@@ -17,9 +17,6 @@ export function Homepage(props) {
 			formData.append("file", data);
 			fetch("/acceptData", {
 				method: "POST",
-				headers: {
-					"Content-Type": "multipart/form-data",
-				},
 				body: formData,
 			})
 				.then((data) => data.json())
@@ -141,7 +138,7 @@ export function Homepage(props) {
 						) : (
 							<input
 								name="data-info"
-								className="my-0 mx-auto text-[black] min-w-[15vw]"
+								className="my-0 py-2 px-4 rounded-full mx-auto text-[black] min-w-[15vw]"
 								type="text"
 								onChange={(e) => setData(e.target.value)}
 								required="true"
