@@ -12,22 +12,39 @@ export function Homepage(props) {
 	const navigate = useNavigate();
 
 	const getInfo = () => {
-		fetch("/acceptData", {
-			method: "POST",
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				text: data,
-				type: type,
-			}),
-		})
-			.then((data) => data.json())
-			.then((res) => {
-				props.setData(res);
+		const formData = new FormData();
+		if (type === 2) {
+			formData.append("file", data);
+			fetch("/acceptData", {
+				method: "POST",
+				headers: {
+					"Content-Type": "multipart/form-data",
+				},
+				body: formData,
 			})
-			.catch((err) => console.log(err));
+				.then((data) => data.json())
+				.then((res) => {
+					props.setData(res);
+				})
+				.catch((err) => console.log(err));
+		} else {
+			fetch("/acceptData", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					text: data,
+					type: type,
+					file: formData
+				}),
+			})
+				.then((data) => data.json())
+				.then((res) => {
+					props.setData(res);
+				})
+				.catch((err) => console.log(err));
+		}
 	};
 
 	const goAnimate = (e) => {
@@ -87,13 +104,14 @@ export function Homepage(props) {
 							value={dropdown ? "Input Type" : inputTypes[type]}
 						/>
 						{dropdown && (
-							<div className="bg-white flex flex-col w-[10vw] !mt-0">
+							<div className="absolute bg-white flex flex-col w-[10vw] !mt-0 top-[25%]">
 								{inputTypes.map((type, index) => {
 									return (
 										<div
 											onClick={() => {
 												setType(index);
 												setDropdown(false);
+												setData("");
 											}}
 											className="px-10 py-2 text-xl font-bold transition-colors duration-150 hover:cursor-pointer hover:bg-blueBg hover:text-white"
 										>
@@ -103,13 +121,32 @@ export function Homepage(props) {
 								})}
 							</div>
 						)}
-						<input
-							name="data-info"
-							className="my-0 mx-auto text-[black] min-w-[15vw]"
-							type="text"
-							onChange={(e) => setData(e.target.value)}
-							required="true"
-						/>
+						{type === 2 ? (
+							<>
+								<input
+									type="file"
+									name="uploadfile"
+									id="file"
+									className="hidden"
+									onChange={(e) => setData(e.target.files[0])}
+								/>
+								<label
+									for="file"
+									className="text-white border-3 px-9 py-4 mt-5 text-xl font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg hover:cursor-pointer"
+								>
+									Upload
+								</label>
+								<p className="text-white !mt-1 text-lg font-bold">{data.name}</p>
+							</>
+						) : (
+							<input
+								name="data-info"
+								className="my-0 mx-auto text-[black] min-w-[15vw]"
+								type="text"
+								onChange={(e) => setData(e.target.value)}
+								required="true"
+							/>
+						)}
 						<button
 							id="launch"
 							className="text-white border-3 px-9 py-4 mt-5 text-xl font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"

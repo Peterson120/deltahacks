@@ -6,40 +6,22 @@ import training_data
 from cohere.responses.classify import Example
 from flask import Flask, request
 
-# Web Scraper
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import ElementNotVisibleException
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
-from parsel import Selector
-
 app = Flask(__name__)
-driver = webdriver.Chrome(ChromeDriverManager().install())
-
-driver.maximize_window()
-driver.implicitly_wait(30)
 
 @app.route("/acceptData", methods=["POST"])
 def get_data():
   data = request.get_json()
   type = data["type"]
-  input = []
-  if type == "web":
-    url = data["text"]
-    driver.get(url)
-    page_content = driver.page_source
-    response = Selector(page_content)
 
-    for el in response.xpath('//div/div[@data-review-id]/div[contains(@class, "content")]'):
-        input.append(el.xpath('.//span[contains(@class, "text")]/text()').extract_first(''))
-    driver.quit()
-
-  else:
+  if type == 0:
+    pass
+  elif type == 1:
     inputs = data["text"].split(",")
+  else:
+    inputs = []
+    print(data)
+    for i in data["file"]:
+      inputs.append(i["file"])
 
   co = cohere.Client(f'{os.getenv("COHERE_KEY")}')
 
@@ -61,7 +43,7 @@ def get_data():
     in_and_pred = zip(inputs, res_class)
 
     for i in in_and_pred:
-      pred = i[1].prediction
+      pred = i[1].predictions[0]
       if pred == "neutral" or pred == "positive":
         pos_reviews.append(i[0])
       else:

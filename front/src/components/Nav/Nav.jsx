@@ -15,18 +15,21 @@ export default function Nav() {
   const reset = useCallback(() => navigate("/", {replace: true}), [navigate]);
 
   return (
-      <Navbar className="fixed pl-[5%] self-start border-0 bg-darkBg">
-        <button
-            className="flex flex-row my-1 lg:my-2 items-center pt-[1%]"
-            onClick={animate}
-            onAnimationEnd={reset}
-        >
-          <Rocket id="rocket" className="col-2 float cursor-pointer transform-[30deg] w-[5vw] mt-[-10%] mx-0 px-0"/>
-          <div
-              className="col-2 tracking-wide drop-shadow-2xl cursor-pointer font-extrabold text-white text-[2.5vw] pt-4vh">
-            {name}
-          </div>
-        </button>
-      </Navbar>
+		<Navbar className="absolute -top-2 md:top-2 pl-[5%] self-start border-0 bg-darkBg">
+			<button
+				className="flex flex-row top-2 left-20 items-center justify-items-center"
+				onClick={animate}
+				onAnimationEnd={reset}
+			>
+				<Rocket
+          id="rocket"
+          width={60}
+					className="float cursor-pointer transform-[30deg] left-[-50%] w-[5vw] -top-2"
+				/>
+				<div className="md:pl-2 tracking-wide drop-shadow-2xl cursor-pointer font-extrabold text-white text-lg md:text-6xl pt-4vh">
+					{name}
+				</div>
+			</button>
+		</Navbar>
   );
 }

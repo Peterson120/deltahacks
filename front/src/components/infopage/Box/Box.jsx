@@ -20,13 +20,13 @@ function Box(props) {
 
   return (
     <div className="mt-auto mb-auto flex justify-center">
-      <div className="box flex border-2 border-solid border-[#FFD178]">
+      <div className="md:w-[35vw] md:h-[35vw] w-[80vw] h-[40vh] box flex border-2 border-solid border-[#FFD178]">
         <div className="gradient self-start flex justify-center" id={props.id}>
           <h2 className="title-text">{props.title}</h2>
         </div>
         {props.loading ? <div className="flex flex-col w-full h-full justify-center overflow-y-scroll overflow-x-hidden">
           {data.map((data, index) => (
-              <ol key={index} className="list-disc list-none">
+              <ol key={index} className="list-disc">
                 <motion.li
                     id="press"
                     className="text-[#FFD178] font-bold hover:cursor-pointer"
