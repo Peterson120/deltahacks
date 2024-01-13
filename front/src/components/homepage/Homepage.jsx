@@ -4,57 +4,36 @@ import { name, inputTypes } from "../../consts";
 import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
+import axios from "axios";
 
 export function Homepage(props) {
-	const [data, setData] = React.useState({});
+	const [data, setData] = React.useState('');
 	const [type, setType] = React.useState(0);
 	const [dropdown, setDropdown] = React.useState(false);
 	const navigate = useNavigate();
 
 	const getInfo = () => {
 		const formData = new FormData();
+		formData.append("type", type);
 		if (type === 2) {
 			formData.append("file", data);
-			fetch("/acceptData", {
-				method: "POST",
-				body: formData,
-			})
-				.then((data) => data.json())
-				.then((res) => {
-					props.setData(res);
-				})
-				.catch((err) => console.log(err));
 		} else {
-			fetch("/acceptData", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					text: data,
-					type: type,
-					file: formData
-				}),
-			})
-				.then((data) => data.json())
-				.then((res) => {
-					props.setData(res);
-				})
-				.catch((err) => console.log(err));
+			formData.append("data", data);
 		}
+		axios.post("/acceptData", formData, {Headers: {'Content-Type': 'multipart/form-data'}})
+			.then((res) => {
+				props.setData(res.data);
+			})
+			.catch((err) => console.log(err));
 	};
 
 	const goAnimate = (e) => {
 		e.preventDefault();
-
 		getInfo();
-
-		const fadeDown = document.querySelectorAll(".fade-down");
-		const fadeUp = document.querySelector(".fade-up");
-		fadeDown.forEach((element) => {
+		document.querySelectorAll(".fade-down").forEach((element) => {
 			element.classList.add("animate__fadeOutDown");
 		});
-		fadeUp.classList.add("animate__backOutUp");
+		document.querySelector(".fade-up").classList.add("animate__backOutUp");
 		props.setData({});
 	};
 
@@ -86,25 +65,27 @@ export function Homepage(props) {
 						{name}
 					</div>
 					<form
+						method="POST"
 						onSubmit={goAnimate}
-						onAnimationEnd={() => {
-							navigate("/info");
-						}}
+						onAnimationEnd={() => navigate("/info")}
 						className="mt-5 absolute top-[60vh] animate__animated fade-down flex flex-col space-y-5 items-center"
 					>
 						<input
 							className="py-2 px-4 rounded-lg text-black text-xl text-center focus:caret-transparent font-bold border border-white transition-colors duration-150 hover:bg-blueBg hover:border-blueBg hover:cursor-pointer w-[10vw]"
+							name="type"
 							onClick={() => {
 								setDropdown(!dropdown);
 							}}
-							required="true"
+							required={true}
 							value={dropdown ? "Input Type" : inputTypes[type]}
+							onChange={(e) => {}}
 						/>
 						{dropdown && (
 							<div className="absolute bg-white flex flex-col w-[10vw] !mt-0 top-[25%]">
 								{inputTypes.map((type, index) => {
 									return (
 										<div
+											key={"type_" + index}
 											onClick={() => {
 												setType(index);
 												setDropdown(false);
@@ -122,34 +103,41 @@ export function Homepage(props) {
 							<>
 								<input
 									type="file"
-									name="uploadfile"
+									name="file"
 									id="file"
 									className="hidden"
 									onChange={(e) => setData(e.target.files[0])}
+									accept=".csv,.txt,.json"
+									required={true}
 								/>
 								<label
-									for="file"
+									htmlFor="file"
 									className="text-white border-3 px-9 py-4 mt-5 text-xl font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg hover:cursor-pointer"
 								>
 									Upload
 								</label>
-								<p className="text-white !mt-1 text-lg font-bold">{data.name}</p>
 							</>
 						) : (
 							<input
-								name="data-info"
+								name="data"
 								className="my-0 py-2 px-4 rounded-full mx-auto text-[black] min-w-[15vw]"
 								type="text"
+								value={data}
 								onChange={(e) => setData(e.target.value)}
-								required="true"
+								required={true}
 							/>
 						)}
-						<button
+						<input
 							id="launch"
-							className="text-white border-3 px-9 py-4 mt-5 text-xl font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
-						>
-							Launch!
-						</button>
+							value={"Launch!"}
+							type="submit"
+							className="hover:cursor-pointer text-white border-3 px-9 py-4 mt-5 text-xl font-bold transition-colors duration-150 border border-blue rounded-lg focus:shadow-outline hover:bg-blueBg"
+						/>
+						{type === 2 && (
+							<p className="text-white !mt-1 text-lg font-bold">
+								{data.name}
+							</p>
+						)}
 					</form>
 				</div>
 			</div>

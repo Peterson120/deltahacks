@@ -1,2 +1,2 @@
 export const name = "SentiView";
-export const inputTypes = ["Web", "Text", "File"];
+export const inputTypes = ["URL", "Text", "File"];

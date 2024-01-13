@@ -10,18 +10,22 @@ app = Flask(__name__)
 
 @app.route("/acceptData", methods=["POST"])
 def get_data():
-  data = request.get_json()
-  type = data["type"]
+  print(request.headers)
 
-  if type == 0:
+  request_data = request.form.to_dict()
+  data_type = int(request_data['type'])
+
+  inputs = []
+
+  if data_type == 0:
     pass
-  elif type == 1:
-    inputs = data["text"].split(",")
-  else:
-    inputs = []
-    print(data)
-    for i in data["file"]:
-      inputs.append(i["file"])
+  elif data_type == 1:
+    inputs = request_data["data"].split(",")
+    print(inputs)
+  elif data_type == 2:
+    inputs = request.files["file"].read().decode("utf-8").split(",")
+    for i in range(len(inputs)):
+      inputs[i] = inputs[i].strip()
 
   co = cohere.Client(f'{os.getenv("COHERE_KEY")}')
 

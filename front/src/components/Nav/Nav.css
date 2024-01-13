@@ -19,6 +19,6 @@
 }
 
 @keyframes leave {
-    from {transform: translateY(30px) translateX(0px)rotate(30deg);}
+    from {rotate: 30deg;}
     to {transform: translateY(-12vh) translateX(5vw) rotate(30deg);}
 }

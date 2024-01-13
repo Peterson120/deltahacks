@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Nav from "../Nav/Nav";
 import Box from "./Box/Box";
+import { MdOutlineClose } from "react-icons/md";
 
 export function InfoPage(props) {
 	const [loading, setLoading] = useState(false);
@@ -31,10 +32,11 @@ export function InfoPage(props) {
 			setNegSent(props.data.NegativeInput);
 		}
 
-		setLoading(false);
-		loadTable().then(() => {
-			setLoading(props.data.PositiveList !== undefined);
-		});
+		setLoading(true);
+		loadTable()
+			.then(() => setLoading(false))
+			.catch((err) => console.log(err))
+			.finally(() => setLoading(false));
 	}, [props.data]);
 
 	const infoRef = useRef(null);
@@ -63,27 +65,16 @@ export function InfoPage(props) {
 			<div className="fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
 				<div className="flex main flex-col md:flex-row space-y-2 md:space-x-2">
 					{modalOpen ? (
-						<div className="modal flex items-center">
-							<div className="border-2 border-solid border-[#FFD178] m-auto box flex justify-center">
+						<div className="modal md:w-[35vw] md:h-[35vw] w-[80vw] h-[40vh] flex items-center">
+							<div className="border-2 border-solid border-[#FFD178] w-full h-full m-auto box flex justify-center">
 								<div className="gradient self-start flex items-center">
 									<span
-										onClick={() => setModalOpen(false)}
 										className="float-right font-bold text-[#FFD178] hover:text-[#FFD178] hover:no-underline hover:cursor-pointer ml-10 absolute"
 									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											strokeWidth={1.5}
-											stroke="currentColor"
+										<MdOutlineClose
+											onClick={() => setModalOpen(false)}
 											className="w-14 h-14"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M6 18L18 6M6 6l12 12"
-											/>
-										</svg>
+										/>
 									</span>
 									<h2 className="title-text mx-auto">
 										{title}
