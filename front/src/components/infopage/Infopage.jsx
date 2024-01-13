@@ -62,32 +62,33 @@ export function InfoPage(props) {
 	return (
 		<div ref={infoRef} id="info-page" className="fadeIn">
 			<Nav />
-			<div className="fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
-				<div className="flex main flex-col md:flex-row space-y-2 md:space-x-2">
+			<div className="fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex main flex-col md:flex-row space-y-2 md:space-x-2">
 					{modalOpen ? (
-						<div className="modal md:w-[35vw] md:h-[35vw] w-[80vw] h-[40vh] flex items-center">
-							<div className="border-2 border-solid border-[#FFD178] w-full h-full m-auto box flex justify-center">
-								<div className="gradient self-start flex items-center">
-									<span
-										className="float-right font-bold text-[#FFD178] hover:text-[#FFD178] hover:no-underline hover:cursor-pointer ml-10 absolute"
+						<>
+							<div className="modal md:w-[35vw] md:h-[35vw] w-[80vw] h-[40vh] flex items-center">
+								<div className="border-2 border-solid border-[#FFD178] w-full h-full m-auto box flex justify-center">
+									<div className="gradient self-start flex items-center">
+										<span className="float-right font-bold text-[#FFD178] hover:text-[#FFD178] hover:no-underline hover:cursor-pointer ml-10 absolute">
+											<MdOutlineClose
+												onClick={() =>
+													setModalOpen(false)
+												}
+												className="w-14 h-14"
+											/>
+										</span>
+										<h2 className="title-text mx-auto">
+											{title}
+										</h2>
+									</div>
+									<h1
+										id="info"
+										className="p-[20px] text-[#FFD178] text-center h-full w-full overflow-y-scroll whitespace-pre-line"
 									>
-										<MdOutlineClose
-											onClick={() => setModalOpen(false)}
-											className="w-14 h-14"
-										/>
-									</span>
-									<h2 className="title-text mx-auto">
-										{title}
-									</h2>
+										{modalText}
+									</h1>
 								</div>
-								<h1
-									id="info"
-									className="p-[20px] text-[#FFD178] text-center h-full w-full overflow-y-scroll whitespace-pre-line"
-								>
-									{modalText}
-								</h1>
 							</div>
-						</div>
+						</>
 					) : (
 						<>
 							<Box
@@ -113,6 +114,5 @@ export function InfoPage(props) {
 					)}
 				</div>
 			</div>
-		</div>
 	);
 }
