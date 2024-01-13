@@ -6,8 +6,8 @@
 }
 
 @keyframes move {
-    from {transform: translateY(0px) translateX(15px)rotate(30deg);}
-    to {transform: translateY(30px) translateX(0px) rotate(30deg);}
+    from {transform: translateY(-5%) translateX(5%)rotate(30deg);}
+    to {transform: translateY(5%) translateX(-5%) rotate(30deg);}
 }
 
 .exit {
@@ -19,6 +19,6 @@
 }
 
 @keyframes leave {
-    from {transform: translateY(30px) translateX(0px)rotate(30deg);}
+    from {rotate: 30deg;}
     to {transform: translateY(-12vh) translateX(5vw) rotate(30deg);}
 }

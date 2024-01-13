@@ -41,6 +41,18 @@ Provide bespoke recommendations to businesses.
 
 ## Try Sentiview
 
+Clone the repo
+
+Go to https://dashboard.cohere.ai/register and get an API key
+
+Copy the .env.display file and name it .env
+
+Paste your API key in the .env file
+
+Install Dependencies
+
+    npm i --prefix front
+
 Open terminal and go to the cloned directory
 
     npm start --prefix front
