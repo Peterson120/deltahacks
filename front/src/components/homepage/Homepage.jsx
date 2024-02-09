@@ -4,7 +4,6 @@ import { name, inputTypes } from "../../consts";
 import rocket from "./rocketship.png";
 import smoke from "./smoke.png";
 import stars from "./stars.png";
-import axios from "axios";
 
 export function Homepage(props) {
 	const [data, setData] = React.useState('');
@@ -12,29 +11,20 @@ export function Homepage(props) {
 	const [dropdown, setDropdown] = React.useState(false);
 	const navigate = useNavigate();
 
-	const getInfo = () => {
+	const setInfo = () => {
 		const formData = new FormData();
 		formData.append("type", type);
-		if (type === 2) {
-			formData.append("file", data);
-		} else {
-			formData.append("data", data);
-		}
-		axios.post("/acceptData", formData, {Headers: {'Content-Type': 'multipart/form-data'}})
-			.then((res) => {
-				props.setData(res.data);
-			})
-			.catch((err) => console.log(err));
+		formData.append(type === 2 ? "file" : "data", data);
+		props.setForm(formData);
 	};
 
 	const goAnimate = (e) => {
 		e.preventDefault();
-		getInfo();
+		setInfo();
 		document.querySelectorAll(".fade-down").forEach((element) => {
 			element.classList.add("animate__fadeOutDown");
 		});
 		document.querySelector(".fade-up").classList.add("animate__backOutUp");
-		props.setData({});
 	};
 
 	return (

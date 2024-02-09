@@ -1,16 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Homepage } from "./components/homepage/Homepage";
 import { InfoPage } from "./components/infopage/Infopage";
 import "./styles.css";
 
 function App() {
-	const [bigData, setBigData] = useState({});
+	const [form, setForm] = useState(new FormData());
 
 	return (
 		<Routes>
-			<Route path="/" element={<Homepage setData={setBigData} />} />
-			<Route path="/info" element={<InfoPage data={bigData} />} />
+			<Route path="/" element={<Homepage setForm={setForm} />} />
+			<Route path="/info" element={<InfoPage form={form} />} />
 		</Routes>
 	);
 }
