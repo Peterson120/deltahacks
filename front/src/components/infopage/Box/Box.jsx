@@ -28,7 +28,7 @@ function Box(props) {
 					<h2 className="title-text">{props.title}</h2>
 				</div>
 				{!props.loading ? (
-					<div className="flex flex-col w-full h-full justify-center overflow-y-scroll overflow-x-hidden">
+					<div className="flex flex-col w-full h-full justify-center overflow-y-auto overflow-x-hidden">
 						{data.map((data, index) => (
 							<ol key={index} className="list-disc">
 								<motion.li

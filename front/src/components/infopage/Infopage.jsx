@@ -87,7 +87,7 @@ export function InfoPage(props) {
                                 </div>
                                 <h1
                                     id="info"
-                                    className="p-[20px] text-[#FFD178] text-center h-full w-full overflow-y-scroll whitespace-pre-line"
+                                    className="p-[20px] text-[#FFD178] text-center h-full w-full overflow-y-auto whitespace-pre-line"
                                 >
                                     {modalText}
                                 </h1>
