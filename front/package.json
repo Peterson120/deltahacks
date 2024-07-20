@@ -5,7 +5,7 @@
   "proxy": "http://127.0.0.1:5000/",
   "dependencies": {
     "@material-tailwind/react": "^2.1.9",
-    "@mui/material": "^5.15.20",
+    "@mui/material": "^5.15.21",
     "@mui/icons-material": "^5.15.20",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
